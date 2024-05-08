@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -61,5 +63,23 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //Relación N:M con Post porque un user puede tener muchos post
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    //Relación N:M con Comment porque un user puede comentar en varios post
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    //Relación N:M con Post porque un user puede darle like a muchos post
+    public function postsLike(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
     }
 }
