@@ -17,6 +17,7 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        fake()->addProvider(new \Mmo\Faker\PicsumProvider(fake()));
         return [
             'user_id' => User::all()->random()->id,
             'image' => 'posts/' . fake()->picsum('public/storage/posts', 640, 480, false),

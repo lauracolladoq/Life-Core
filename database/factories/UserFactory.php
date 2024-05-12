@@ -26,6 +26,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        fake()->addProvider(new \Mmo\Faker\PicsumProvider(fake()));
         return [
             'name' => fake()->name(),
             'username' => fake()->unique()->word(),
