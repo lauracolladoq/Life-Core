@@ -30,7 +30,9 @@
                                         $myLikes->pluck('id')->toArray()),
                                 ])></i>
                             </button>
-                            <span><i class="fa-regular fa-comment-dots"></i></span>
+                            <button id="toggleComments-{{ $post->id }}">
+                                <i class="fa-regular fa-comment-dots"></i>
+                            </button>
                             <span><i class="fa-solid fa-link"></i></span>
                         </div>
 
@@ -56,6 +58,26 @@
                                         class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
                                 @endforeach
                             </div>
+                        </div>
+                        <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
+                            @if (count($post->comments))
+                                @foreach ($post->comments as $comment)
+                                    <div class="comment">
+                                        <div class="profile-picture">
+                                            <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
+                                                alt="" />
+                                        </div>
+                                        <div class="comment-body">
+                                            <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                            <p>
+                                                {{ $comment->content }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>No comments yet</p>
+                            @endif
                         </div>
                     </div>
                 @endforeach
