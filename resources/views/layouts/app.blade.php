@@ -62,82 +62,68 @@
             <!-- ------------------------------------------- Inicio Sección Izquierda ------------------------------------------- -->
             <div class="main-left">
                 <!-- -------------------- Perfil -------------------- -->
-                <a href="" class="profile">
-                    <div class="profile-picture" id="my-profile-picture">
-                      <img src="Assets/images/img/f1.jpg" alt="" />
-                    </div>
-                    <div class="profile-handle">
-                      <h4 class="font-extrabold">Beg Joker</h4>
-                      <p class="text-gray">@thebegjoker</p>
-                    </div>
-                  </a>
+                <!-- Si está autenticado aparece la foto de perfil y el nombre del usuario -->
+                @auth
+                    <a href="" class="profile">
+                        <div class="profile-picture" id="my-profile-picture">
+                            <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}"
+                                alt="My Profile Picture" />
+                        </div>
+                        <div class="profile-handle">
+                            <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
+                            <p class="text-gray"><span>@</span>{{ auth()->user()->username }}</p>
+                        </div>
+                    </a>
+                @endauth
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                  @csrf
+
+                  <x-dropdown-link href="{{ route('logout') }}"
+                           @click.prevent="$root.submit();">
+                      {{ __('Log Out') }}
+                  </x-dropdown-link>
+              </form>
                 <!-- -------------------- Fin Perfil -------------------- -->
 
                 <!-- ------------------------------------------- Inicio Aside ------------------------------------------- -->
                 <aside>
+                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')"
+                        class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
+                        <span><img src="https://cdn.hugeicons.com/icons/home-01-stroke-rounded.svg" alt="home-01"
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Home</h3>
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('')"
+                        class="menu-item {{ request()->routeIs('') ? 'active' : '' }}">
+                        <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="user"
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">My Profile</h3>
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('')"
+                        class="menu-item {{ request()->routeIs('') ? 'active' : '' }}">
+                        <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="view"
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Explore</h3>
+                    </x-nav-link>
+
                     <a href="" class="menu-item">
-                      <span
-                        ><img
-                          src="https://cdn.hugeicons.com/icons/home-01-stroke-rounded.svg"
-                          alt="home-01"
-                          width="48"
-                          height="48"
-                        />
-                      </span>
-                      <h3 class="font-extrabold">Home</h3>
-                    </a>
-                    <a href="" class="menu-item active">
-                      <span>
-                        <img
-                          src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg"
-                          alt="user"
-                          width="48"
-                          height="48"
-                        />
-                      </span>
-                      <h3 class="font-extrabold">My Profile</h3>
-                    </a>
-                    <a href="" class="menu-item">
-                      <span
-                        ><img
-                          src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg"
-                          alt="view"
-                          width="48"
-                          height="48"
-                      /></span>
-                      <h3 class="font-extrabold">Explore</h3>
+                        <span><img src="https://cdn.hugeicons.com/icons/notification-01-stroke-rounded.svg"
+                                alt="notification-01" width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Notifications</h3>
                     </a>
                     <a href="" class="menu-item">
-                      <span
-                        ><img
-                          src="https://cdn.hugeicons.com/icons/notification-01-stroke-rounded.svg"
-                          alt="notification-01"
-                          width="48"
-                          height="48"
-                      /></span>
-                      <h3 class="font-extrabold">Notifications</h3>
+                        <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="message-02"
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Messages</h3>
                     </a>
                     <a href="" class="menu-item">
-                      <span
-                        ><img
-                          src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg"
-                          alt="message-02"
-                          width="48"
-                          height="48"
-                      /></span>
-                      <h3 class="font-extrabold">Messages</h3>
+                        <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
+                                alt="paint-board" width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Theme</h3>
                     </a>
-                    <a href="" class="menu-item" id="theme">
-                      <span
-                        ><img
-                          src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
-                          alt="paint-board"
-                          width="48"
-                          height="48"
-                      /></span>
-                      <h3 class="font-extrabold">Theme</h3>
-                    </a>
-                  </aside>
+                </aside>
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
             <!-- ------------------------------------------- Fin Sección Izquierda ------------------------------------------- -->
