@@ -40,7 +40,7 @@ class Post extends Model
     }
 
     //Accessors y mutators
-    public function contenido(): Attribute
+    public function content(): Attribute
     {
         return Attribute::make(
             set: fn ($v) => ucfirst($v)

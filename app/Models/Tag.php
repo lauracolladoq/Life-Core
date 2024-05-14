@@ -20,7 +20,7 @@ class Tag extends Model
     }
 
     //Accessors y mutators
-    public function nombre(): Attribute
+    public function name(): Attribute
     {
         return Attribute::make(
             get: fn ($v) => "#" . $v,

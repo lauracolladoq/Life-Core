@@ -14,17 +14,13 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $tags = [
-            'Animals' => "#FF0000",
-            'Art' => "#FF6200",
-            'Movies' => "#FFC300",
-            'Food' => "#BFE100",
-            'Sports' => "#7FFF00",
-            'Music' => "#55CF7F",
-            'Fashion' => "#1E90FF",
-            'Nature' => "#5530D0",
-            'Technology' => "#8A2BE2",
-            'Travel' => "#B75F8D",
-            'Video Games' => "#FF1493"
+            'Animals' => "#FFCCCC",
+            'Art' => "#FFDAB9",
+            'Movies' => "#FFFACD",
+            'Sports' => "#C1FFC1",
+            'Fashion' => "#ADD8E6",
+            'Technology' => "#E6E6FA",
+            'Videogames' => "#FFB6C1"
         ];
 
         foreach ($tags as $n => $c) {
