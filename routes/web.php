@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,7 +12,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    //Redirecciona a la vista home si el usuario está logueado
+    Route::redirect('/', '/home');
+    Route::get('/home', Home::class)->name('home');
 });
