@@ -22,7 +22,14 @@
                             <img src="{{ Storage::url($post->image) }}" alt="" />
                         </div>
                         <div class="action-button">
-                            <span><i class="fa-regular fa-heart liked"></i></span>
+                            <button wire:click="like({{ $post->id }})">
+                                <i @class([
+                                    'fa-regular fa-heart',
+                                    'fa-solid fa-heart liked' => in_array(
+                                        $post->id,
+                                        $myLikes->pluck('id')->toArray()),
+                                ])></i>
+                            </button>
                             <span><i class="fa-regular fa-comment-dots"></i></span>
                             <span><i class="fa-solid fa-link"></i></span>
                         </div>

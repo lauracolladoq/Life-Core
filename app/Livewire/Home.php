@@ -22,4 +22,10 @@ class Home extends Component
 
         return view('livewire.home', compact('posts', 'myLikes'));
     }
+
+    public function like(Post $post)
+    {
+        //toogle para agregar o quitar like
+        $post->usersLikes()->toggle(auth()->user()->id);
+    }
 }
