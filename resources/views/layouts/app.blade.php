@@ -76,13 +76,12 @@
                     </a>
                 @endauth
                 <form method="POST" action="{{ route('logout') }}" x-data>
-                  @csrf
+                    @csrf
 
-                  <x-dropdown-link href="{{ route('logout') }}"
-                           @click.prevent="$root.submit();">
-                      {{ __('Log Out') }}
-                  </x-dropdown-link>
-              </form>
+                    <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                </form>
                 <!-- -------------------- Fin Perfil -------------------- -->
 
                 <!-- ------------------------------------------- Inicio Aside ------------------------------------------- -->
@@ -113,11 +112,14 @@
                                 alt="notification-01" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Notifications</h3>
                     </a>
-                    <a href="" class="menu-item">
+
+                    <x-nav-link href="{{ route('chatify') }}" :active="request()->routeIs('chatify')"
+                        class="menu-item {{ request()->routeIs('chatify') ? 'active' : '' }}">
                         <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="message-02"
                                 width="48" height="48" /></span>
                         <h3 class="font-extrabold">Messages</h3>
-                    </a>
+                    </x-nav-link>
+
                     <a href="" class="menu-item">
                         <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
                                 alt="paint-board" width="48" height="48" /></span>
