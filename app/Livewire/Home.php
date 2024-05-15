@@ -12,7 +12,6 @@ class Home extends Component
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')
             ->orderBy('id')
             ->with('user', 'tags', 'comments')
-            ->take(5)
             ->get();
 
 
