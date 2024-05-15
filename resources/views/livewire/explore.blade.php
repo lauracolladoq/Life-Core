@@ -24,9 +24,14 @@
                         <div class="action-button">
                             <!-- Si el usuario está logeado le aparece el botón de like -->
                             @auth
-                                <button wire:click="like({{ $post->id }})">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
+                            <button wire:click="like({{ $post->id }})">
+                                <i @class([
+                                    'fa-regular fa-heart',
+                                    'fa-solid fa-heart liked' => in_array(
+                                        $post->id,
+                                        $myLikes->pluck('id')->toArray()),
+                                ])></i>
+                            </button>
                             @endauth
                             <button id="toggleComments-{{ $post->id }}">
                                 <i class="fa-regular fa-comment-dots"></i>
