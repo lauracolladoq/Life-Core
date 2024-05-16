@@ -103,7 +103,7 @@
             <!-- ------------------------------------------- Fin Feed  ------------------------------------------- -->
         <!-- Si no hay posts, aparece un mensaje -->
         @else
-            <div class="no-posts">
+            <div class="no-posts text-center">
                 <h2 class="text-2xl font-extrabold">No posts yet</h2>
                 <p class="text-gray">When someone posts something, you'll see it here.</p>
             </div>
