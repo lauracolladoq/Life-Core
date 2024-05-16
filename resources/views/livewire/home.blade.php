@@ -1,7 +1,9 @@
 <div>
-    @if ($posts->count())
-        <div class="main-middle">
-            <!-- ------------------------------------------- Inicio Feed ------------------------------------------- -->
+
+    <div class="main-middle">
+        <!-- ------------------------------------------- Inicio Feed ------------------------------------------- -->
+        <!-- Si los usuarios a los que sigues han subido posts, se muestran -->
+        @if ($posts->count())
             <div class="feeds">
                 @foreach ($posts as $post)
                     <div class="feed">
@@ -74,6 +76,7 @@
                             </div>
                         </div>
                         <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
+                            <!-- Si tiene comentarios, se muestran -->
                             @if (count($post->comments))
                                 @foreach ($post->comments as $comment)
                                     <div class="comment">
@@ -89,6 +92,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <!-- Si no tiene comentarios, aparece un mensaje -->
                             @else
                                 <p>No comments yet</p>
                             @endif
@@ -97,6 +101,13 @@
                 @endforeach
             </div>
             <!-- ------------------------------------------- Fin Feed  ------------------------------------------- -->
-        </div>
-    @endif
+        <!-- Si no hay posts, aparece un mensaje -->
+        @else
+            <div class="no-posts">
+                <h2 class="text-2xl font-extrabold">No posts yet</h2>
+                <p class="text-gray">When someone posts something, you'll see it here.</p>
+            </div>
+        @endif
+    </div>
+
 </div>
