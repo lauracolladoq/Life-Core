@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none;
+  display: none;
 }
 
 /* --------------- Reseteo de propiedades --------------- */
@@ -17,6 +17,16 @@
   text-decoration: none;
   list-style: none;
   border: none;
+}
+
+/* --------------- Reseteo de propiedades añadidas por Bootstrap --------------- */
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 /* --------------- Creación de variables --------------- */
@@ -78,8 +88,10 @@ img {
   cursor: pointer;
   border-radius: var(--border-radius);
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 700;
   transition: 300ms ease all;
+  border: none;
+  margin: 0;
 }
 
 .btn:hover {
@@ -137,6 +149,7 @@ nav .search-bar input[type]::placeholder {
 .add-post {
   display: flex;
   align-items: center;
+  text-align: center;
   gap: 2rem;
 }
 
@@ -172,6 +185,10 @@ main {
   top: 5.4rem;
 }
 
+.main-left button:first-child {
+  margin-bottom: 1rem;
+}
+
 .main-left .profile {
   background: var(--color-white);
   padding: var(--card-padding);
@@ -179,12 +196,13 @@ main {
   width: 100%;
   gap: 1rem;
   display: flex;
+  text-align: start;
+  align-items: center;
   color: var(--color-dark);
 }
 
 /* ----- Aside ----- */
 aside {
-  margin-top: 1rem;
   border-radius: var(--card-border-radius);
 }
 
@@ -201,12 +219,7 @@ aside .menu-item {
 
 aside .menu-item:hover {
   background: var(--color-light);
-}
-
-aside .menu-item span img {
-  width: 1.8rem;
-  margin-left: 2rem;
-  position: relative;
+  text-decoration: none;
 }
 
 aside .menu-item h3 {
@@ -282,6 +295,12 @@ aside .menu-item:last-child {
   gap: 1rem;
 }
 
+.feed .feed-top .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .feed .feed-top .edit img {
   width: 1.6rem;
 }
@@ -327,7 +346,7 @@ aside .menu-item:last-child {
 }
 
 /* ----- Comentarios ----- */
-.comments{
+.comments {
   max-height: 15rem;
   overflow-y: auto;
   margin-top: 1rem;
@@ -346,18 +365,26 @@ aside .menu-item:last-child {
 
 /* --------------- Fin Main Central --------------- */
 
-/* --------------- Inicio Main Derecha --------------- */
+/* --------------- Inicio Main Izquierda --------------- */
 .main-right {
   bottom: 0;
   height: auto;
 }
+
+
 /* --------------- Fin Main Izquierda --------------- */
 
 /* --------------- Fin Main --------------- */
 
 /* --------------- Otras Propiedades --------------- */
+span img {
+  width: 1.8rem;
+  margin-left: 2rem;
+  position: relative;
+}
+
 .boxshadow:hover {
-  box-shadow: 0 0 0.5rem var(--color-primary);
+  box-shadow: 0 0 0.2rem var(--color-primary);
 }
 
 .liked {
@@ -371,6 +398,35 @@ aside .menu-item:last-child {
   padding: 0.2rem;
   border-radius: 0.2rem;
 }
+
+/* --------------- Modales --------------- */
+.modal-style {
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+}
+
+/* ----- Profile ----- */
+.profile-modal .profile-picture {
+  width: 15rem;
+  margin: 0 auto;
+}
+
+.profile-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.profile-modal .modal-body img {
+  margin-top: 1rem;
+}
+
+.profile-modal .modal-footer {
+  justify-content: center;
+}
+
+
+
 
 /* --------------- Inicio Media Queryes --------------- */
 
