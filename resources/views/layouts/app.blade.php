@@ -21,6 +21,9 @@
     <!-- CDN TailWind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- CDN Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -60,7 +63,7 @@
                 <!-- -------------------- Perfil -------------------- -->
                 <!-- Si está autenticado aparece la foto de perfil y el nombre del usuario -->
                 @auth
-                    <a href="" class="profile">
+                    <button data-toggle="modal" data-target="#myProfile" class="profile boxshadow">
                         <div class="profile-picture" id="my-profile-picture">
                             <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}"
                                 alt="My Profile Picture" />
@@ -69,7 +72,7 @@
                             <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
                             <p class="text-gray"><span>@</span>{{ auth()->user()->username }}</p>
                         </div>
-                    </a>
+                    </button>
                 @endauth
                 <!-- -------------------- Fin Perfil -------------------- -->
 
@@ -129,10 +132,48 @@
             </div>
             <!-- ------------------------------------------- Fin Sección Derecha ------------------------------------------- -->
         </div>
+
+        <!------------------------------------------- Modales -------------------------------------------->
+
+        <!---------- Modal My Profile ---------->
+        @auth
+            <div class="modal p-0 fade" id="myProfile">
+                <div class="modal-dialog modal-dialog-centered profile-modal">
+                    <div class="modal-content modal-style">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <h1 class="font-extrabold text-3xl">{{ auth()->user()->name }}</h1>
+                            <p class="font-bold text-md"><span>@</span>{{ auth()->user()->username }}</p>
+                            <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}" alt=""
+                                class="profile-picture" />
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <a class="btn btn-primary" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endauth
+        <!---------- Fin Modal My Profile ---------->
+        <!------------------------------------------- Fin Modales -------------------------------------------->
     </main>
     @stack('modals')
 
     @livewireScripts
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
