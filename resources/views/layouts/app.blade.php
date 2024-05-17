@@ -34,20 +34,17 @@
     <!-- ------------------------------------------- Inicio NavBar ------------------------------------------- -->
     <nav>
         <div class="container nav-container">
-            <div class="logo">
+            <a href="/" class="logo">
                 <h3>Life <span>Core</span></h3>
-            </div>
-            <div class="search-bar">
+            </a>
+            <div class="search-bar boxshadow">
                 <i class="fa fa-search"></i>
                 <input placeholder="Search User" />
             </div>
             @auth
-                <!-- Si está autenticado aparece el boton de Add Post y la foto de perfil -->
+                <!-- Si está autenticado aparece el boton de Add Post -->
                 <div class="add-post">
                     <label for="add-post" class="btn btn-primary">Add Post</label>
-                    <div class="profile-picture" id="my-profile-picture">
-                        <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}" alt="My Profile Picture" />
-                    </div>
                 </div>
                 <!-- Si no está autenticado aparece el boton de Login -->
             @else
