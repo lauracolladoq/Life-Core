@@ -371,6 +371,56 @@ aside .menu-item:last-child {
   height: auto;
 }
 
+/* --- Trending --- */
+.trending {
+  position: sticky;
+  top: 5.4rem;
+  background: var(--color-white);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
+
+.trending-header {
+  display: flex;
+  text-align: start;
+  background: var(--color-white);
+  color: var(--color-dark);
+  gap: 1rem;
+  align-items: center;
+}
+
+.trending-body {
+  overflow-y: auto;
+  max-height: 27rem;
+}
+
+.trending-search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--color-light);
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.trending-search-bar input {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+
+.tags {
+  display: flex;
+  gap: 1rem;
+}
+
+.tag:last-child {
+  margin-bottom: 0;
+}
+
 
 /* --------------- Fin Main Izquierda --------------- */
 

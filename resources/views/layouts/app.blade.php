@@ -128,7 +128,22 @@
 
             <!-- ------------------------------------------- Inicio Sección Derecha ------------------------------------------- -->
             <div class="main-right">
-
+                <div class="trending">
+                    <div class="trending-header">
+                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire"
+                                width="48" height="48" class="m-0" /></span>
+                        <h3 class="font-extrabold">Trending</h4>
+                    </div>
+                    <div class="trending-body">
+                        <div class="trending-search-bar">
+                            <i class="fas fa-search"></i>
+                            <input placeholder="Search tag" id="trending-search" />
+                        </div>
+                        <div class="tags">
+                            <span>Prueba</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- ------------------------------------------- Fin Sección Derecha ------------------------------------------- -->
         </div>
@@ -155,7 +170,8 @@
                         <div class="modal-footer">
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-                                <a class="btn btn-primary" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <a class="btn btn-primary" href="{{ route('logout') }}"
+                                    @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </a>
                             </form>
