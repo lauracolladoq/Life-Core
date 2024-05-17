@@ -39,8 +39,8 @@
                         </div>
 
                         <!-- Si no tiene likes, aparece 0 Likes -->
+                        <!-- Si no tiene likes, aparece vacío -->
                         @if ($post->usersLikes->count() == 0)
-                            <p>0 Likes</p>
                             <!-- Si solo tiene un like, aparece que es likeado por esa persona y solo aparece su foto -->
                         @elseif ($post->usersLikes->count() == 1)
                             <div class="liked-by">
@@ -101,7 +101,7 @@
                 @endforeach
             </div>
             <!-- ------------------------------------------- Fin Feed  ------------------------------------------- -->
-        <!-- Si no hay posts, aparece un mensaje -->
+            <!-- Si no hay posts, aparece un mensaje -->
         @else
             <div class="no-posts text-center">
                 <h2 class="text-2xl font-extrabold">No posts yet</h2>

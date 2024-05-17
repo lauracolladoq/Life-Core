@@ -24,14 +24,14 @@
                         <div class="action-button">
                             <!-- Si el usuario está logeado le aparece el botón de like -->
                             @auth
-                            <button wire:click="like({{ $post->id }})">
-                                <i @class([
-                                    'fa-regular fa-heart',
-                                    'fa-solid fa-heart liked' => in_array(
-                                        $post->id,
-                                        $myLikes->pluck('id')->toArray()),
-                                ])></i>
-                            </button>
+                                <button wire:click="like({{ $post->id }})">
+                                    <i @class([
+                                        'fa-regular fa-heart',
+                                        'fa-solid fa-heart liked' => in_array(
+                                            $post->id,
+                                            $myLikes->pluck('id')->toArray()),
+                                    ])></i>
+                                </button>
                             @endauth
                             <button id="toggleComments-{{ $post->id }}">
                                 <i class="fa-regular fa-comment-dots"></i>
@@ -39,9 +39,8 @@
                             <span><i class="fa-solid fa-link"></i></span>
                         </div>
 
-                        <!-- Si no tiene likes, aparece 0 Likes -->
+                        <!-- Si no tiene likes, aparece vacío -->
                         @if ($post->usersLikes->count() == 0)
-                            <p>0 Likes</p>
                             <!-- Si solo tiene un like, aparece que es likeado por esa persona y solo aparece su foto -->
                         @elseif ($post->usersLikes->count() == 1)
                             <div class="liked-by">
