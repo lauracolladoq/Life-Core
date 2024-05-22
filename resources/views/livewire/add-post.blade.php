@@ -18,12 +18,12 @@
                 <div class="column flex flex-col">
                     <x-label for="image">Image:</x-label>
                     <x-input type="file" id="image" wire:model="image" />
-                    <x-input-error for="image" />
+                    <x-input-error for="image" class="pt-2" />
                 </div>
                 <div class="column">
                     <x-label for="content">Content</x-label>
                     <textarea id="content" name="content" wire:model="content"></textarea>
-                    <x-input-error for="content" />
+                    <x-input-error for="content"  class="pt-2"/>
                 </div>
             </div>
             <div class="row flex flex-column">
@@ -42,7 +42,7 @@
                         </div>
                     @endforeach
                 </div>
-                <x-input-error for="tags" />
+                <x-input-error for="tags" class="pt-2"/>
             </div>
         </x-slot>
         <x-slot name="footer">

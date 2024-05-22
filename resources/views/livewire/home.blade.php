@@ -37,8 +37,6 @@
                             </button>
                             <span><i class="fa-solid fa-link"></i></span>
                         </div>
-
-                        <!-- Si no tiene likes, aparece 0 Likes -->
                         <!-- Si no tiene likes, aparece vacío -->
                         @if ($post->usersLikes->count() == 0)
                             <!-- Si solo tiene un like, aparece que es likeado por esa persona y solo aparece su foto -->
@@ -64,9 +62,12 @@
                             </div>
                         @endif
                         <div class="caption">
-                            <p>
-                                <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
-                            </p>
+                            <!-- Si no tiene contenido, aparece vacío -->
+                            @if ($post->content)
+                                <p>
+                                    <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
+                                </p>
+                            @endif
                             <div class="tags pt-2 flex flex-wrap gap-2">
                                 @foreach ($post->tags as $tag)
                                     <span
@@ -81,7 +82,7 @@
                                     <div class="comment">
                                         <div class="profile-picture">
                                             <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
-                                                alt=""/>
+                                                alt="" />
                                         </div>
                                         <div class="comment-body">
                                             <p class="font-extrabold">{{ $comment->user->username }}</p>
