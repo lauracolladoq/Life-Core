@@ -47,7 +47,7 @@
             @auth
                 <!-- Si está autenticado aparece el boton de Add Post -->
                 <div class="add-post">
-                    <label for="add-post" class="btn btn-primary">Add Post</label>
+                    @livewire('add-post')
                 </div>
                 <!-- Si no está autenticado aparece el boton de Login -->
             @else
@@ -184,9 +184,17 @@
         <!------------------------------------------- Fin Modales -------------------------------------------->
     </main>
     @stack('modals')
-
     @livewireScripts
-
+    <script>
+        Livewire.on('message', txt => {
+            Swal.fire({
+                icon: "success",
+                title: txt,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        });
+    </script>
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

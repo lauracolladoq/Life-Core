@@ -63,7 +63,6 @@
                                 </p>
                             </div>
                         @endif
-
                         <div class="caption">
                             <p>
                                 <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
@@ -82,7 +81,7 @@
                                     <div class="comment">
                                         <div class="profile-picture">
                                             <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
-                                                alt="" />
+                                                alt=""/>
                                         </div>
                                         <div class="comment-body">
                                             <p class="font-extrabold">{{ $comment->user->username }}</p>

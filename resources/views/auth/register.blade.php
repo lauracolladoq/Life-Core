@@ -11,7 +11,7 @@
                     <div class="mt-4">
                         <div class="flex items-start mb-2">
                             <x-label for="email" class="text-xs block" value="{{ __('Email') }}" />
-                            <x-validation-errors for="email" class="ml-4 text-xs" />
+                            <x-input-error for="email" class="ml-4 text-xs" />
                         </div>
                         <x-input id="email"
                             class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
@@ -21,7 +21,7 @@
                     <div class="mt-4">
                         <div class="flex items-start mb-2">
                             <x-label for="name" class="text-xs block" value="{{ __('Name') }}" />
-                            <x-validation-errors for="name" class="ml-4 text-xs" />
+                            <x-input-error for="name" class="ml-4 text-xs" />
                         </div>
                         <x-input id="name"
                             class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
@@ -31,7 +31,7 @@
                     <div class="mt-4">
                         <div class="flex items-start mb-2">
                             <x-label for="username" class="text-xs block" value="{{ __('Username') }}" />
-                            <x-validation-errors for="username" class="ml-4 text-xs" />
+                            <x-input-error for="username" class="ml-4 text-xs" />
                         </div>
                         <x-input id="username"
                             class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
@@ -41,7 +41,7 @@
                     <div class="mt-4">
                         <div class="flex items-start mb-2">
                             <x-label for="password" class="text-xs block" value="{{ __('Password') }}" />
-                            <x-validation-errors for="password" class="ml-4 text-xs" />
+                            <x-input-error for="password" class="ml-4 text-xs" />
                         </div>
                         <div class="relative flex items-center">
                             <x-input id="password"
@@ -61,7 +61,7 @@
                         <div class="flex items-start mb-2">
                             <x-label for="password_confirmation" class="text-sm block"
                                 value="{{ __('Confirm Password') }}" />
-                            <x-validation-errors for="password" class="ml-4 text-xs" />
+                            <x-input-error for="password" class="ml-4 text-xs" />
                         </div>
                         <div class="relative flex items-center">
                             <x-input id="password_confirmation"

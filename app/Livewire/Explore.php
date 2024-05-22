@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Explore extends Component
 {
+    #[On('eventAddPost')]
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')

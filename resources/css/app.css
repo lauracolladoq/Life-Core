@@ -71,11 +71,11 @@ img {
   width: 100%;
 }
 
-.profile-picture {
-  width: 3rem;
+.profile-picture{
+  width: 3vw;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .profile-picture:hover {
@@ -286,10 +286,6 @@ aside .menu-item:last-child {
   align-items: center;
 }
 
-.myfeed .feed-top .edit {
-  position: relative;
-}
-
 .feed .feed-top .user {
   display: flex;
   gap: 1rem;
@@ -299,10 +295,6 @@ aside .menu-item:last-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.feed .feed-top .edit img {
-  width: 1.6rem;
 }
 
 .feed .feed-img {
@@ -315,10 +307,6 @@ aside .menu-item:last-child {
   display: flex;
   gap: 0.5rem;
   font-size: 1.4rem;
-}
-
-.hars-tag {
-  color: var(--color-primary);
 }
 
 /* ----- Liked By ----- */
@@ -341,6 +329,10 @@ aside .menu-item:last-child {
   margin: 0;
 }
 
+.liked-by span:nth-child(2) {
+  z-index: 1;
+}
+
 .liked-by p {
   margin-left: 0.3rem;
 }
@@ -356,12 +348,14 @@ aside .menu-item:last-child {
   display: flex;
   margin-top: 1rem;
   gap: 1rem;
+  overflow: auto;
   align-items: start;
 }
 
-.comment .profile-picture {
-  width: 2rem;
-}
+.comment .profile-picture img{
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+} 
 
 /* --------------- Fin Main Central --------------- */
 

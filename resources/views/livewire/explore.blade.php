@@ -78,10 +78,10 @@
                         <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
                             @if (count($post->comments))
                                 @foreach ($post->comments as $comment)
-                                    <div class="comment">
+                                    <div class="comment ">
                                         <div class="profile-picture">
                                             <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
-                                                alt="" />
+                                                alt="" class="bg-cover bg-no-repeat"/>
                                         </div>
                                         <div class="comment-body">
                                             <p class="font-extrabold">{{ $comment->user->username }}</p>
