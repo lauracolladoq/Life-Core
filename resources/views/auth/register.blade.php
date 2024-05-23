@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="mt-8 flex justify-center">
-                        <x-button class="w-80">
+                        <x-button  class="w-80 shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-blue-500 hover:bg-blue-600 focus:outline-none">
                             {{ __('Register') }}
                         </x-button>
                     </div>

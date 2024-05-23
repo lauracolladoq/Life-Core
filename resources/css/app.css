@@ -72,7 +72,8 @@ img {
 }
 
 .profile-picture{
-  width: 3vw;
+  width: 3rem;
+  height: 3rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: auto;
@@ -352,9 +353,9 @@ aside .menu-item:last-child {
   align-items: start;
 }
 
-.comment .profile-picture img{
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+.comment .profile-picture{
+  width: 2rem;
+  height: 2rem;
 } 
 
 /* --------------- Fin Main Central --------------- */
@@ -452,6 +453,7 @@ span img {
 /* ----- Profile ----- */
 .profile-modal .profile-picture {
   width: 15rem;
+  height: 15rem;
   margin: 0 auto;
 }
 

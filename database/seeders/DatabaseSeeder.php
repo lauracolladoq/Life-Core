@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'username' => "admin",
             'email' => "admin@email.es",
             'password' => "password",
+            'isAdmin' => true
         ]);
 
         $this->call(TagSeeder::class);

@@ -38,7 +38,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             //'profile_photo_path' => null,
             'current_team_id' => null,
-            'avatar' => fake()->picsum('public/storage/users-avatar', 300, 300, false)
+            'avatar' => fake()->picsum('public/storage/users-avatar', 300, 300, false),
         ];
     }
 
