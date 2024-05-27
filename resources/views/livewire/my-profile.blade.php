@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div>
-                
+                @livewire('edit-profile')
             </div>
         </div>
 
