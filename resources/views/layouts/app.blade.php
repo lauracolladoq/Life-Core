@@ -85,8 +85,8 @@
                         <h3 class="font-extrabold">Home</h3>
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('')"
-                        class="menu-item {{ request()->routeIs('') ? 'active' : '' }}">
+                    <x-nav-link href="{{ route('myProfile') }}" :active="request()->routeIs('')"
+                        class="menu-item {{ request()->routeIs('myProfile') ? 'active' : '' }}">
                         <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="user"
                                 width="48" height="48" /></span>
                         <h3 class="font-extrabold">My Profile</h3>

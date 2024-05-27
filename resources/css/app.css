@@ -437,6 +437,66 @@ span img {
   border-radius: 0.2rem;
 }
 
+
+/* --------------- Inicio My Profile --------------- */
+
+.main-middle-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 1rem;
+}
+
+.profile-picture-bigger {
+  width: 5rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-feeds {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.profile-feed:hover {
+  opacity: 0.75;
+}
+
+.personal-info,
+.social-info {
+  gap: 1rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.profile-info {
+  background: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-dark);
+  height: 7rem;
+}
+
+.profile-feeds .profile-feed {
+  background: var(--color-white);
+  padding: 0.5rem;
+  border-radius: var(--card-border-radius);
+  position: relative;
+}
+
+.profile-feed .feed-img {
+  border-radius: var(--card-border-radius);
+  height: 12rem;
+  overflow: hidden;
+}
+
 /* --------------- Modales --------------- */
 .modal-style {
   background: var(--color-white);
