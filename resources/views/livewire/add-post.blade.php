@@ -14,20 +14,30 @@
             </div>
         </x-slot>
         <x-slot name="content">
-            <div class="row flex items-center justify-between">
-                <div class="column flex flex-col">
-                    <x-label for="image">Image:</x-label>
-                    <x-input type="file" id="image" wire:model="image" />
-                    <x-input-error for="image" class="pt-2" />
+            <div class="row flex justify-between text-center flex-nowrap gap-5 p-2">
+                <div class="column flex flex-col w-1/2">
+                    <x-label for="image" class="font-extrabold text-center">Image</x-label>
+                    <div class="relative div-image">
+                        <input type="file" wire:model="image" accept="image/*" hidden id="image" />
+                        <label for="image"
+                            class="absolute btn btn-primary bottom-2">
+                            <i class="fa-solid fa-upload mr-2"></i>Upload
+                        </label>
+                        @if ($image)
+                            <img src="{{ $image->temporaryUrl() }}"
+                                class="p-1 rounded w-full h-full br-no-repeat bg-cover bg-center" />
+                        @endif
+                    </div>
+                    <x-input-error for="image" class="my-2" />
                 </div>
-                <div class="column">
-                    <x-label for="content">Content</x-label>
-                    <textarea id="content" name="content" wire:model="content"></textarea>
-                    <x-input-error for="content"  class="pt-2"/>
+                <div class="column flex flex-col w-1/2">
+                    <x-label for="content" class="font-extrabold text-center">Content</x-label>
+                    <textarea id="content" name="content" wire:model="content" class="add-post w-full"></textarea>
+                    <x-input-error for="content" class="pt-2"/>
                 </div>
             </div>
-            <div class="row flex flex-column">
-                <x-label for="tags" class="font-extrabold">Tags</x-label>
+            <div class="row flex flex-column pt-2">
+                <x-label for="tags" class="font-extrabold text-center">Tags</x-label>
                 <div class="flex flex-wrap gap-2 justify-center">
                     @foreach ($myTags as $tag)
                         <div class="relative inline-block">

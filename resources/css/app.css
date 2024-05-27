@@ -71,7 +71,7 @@ img {
   width: 100%;
 }
 
-.profile-picture{
+.profile-picture {
   width: 3rem;
   height: 3rem;
   aspect-ratio: 1/1;
@@ -145,13 +145,6 @@ nav .search-bar input {
 
 nav .search-bar input[type]::placeholder {
   color: var(--color-gray);
-}
-
-.add-post {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  gap: 2rem;
 }
 
 .logo h3 {
@@ -353,10 +346,10 @@ aside .menu-item:last-child {
   align-items: start;
 }
 
-.comment .profile-picture{
+.comment .profile-picture {
   width: 2rem;
   height: 2rem;
-} 
+}
 
 /* --------------- Fin Main Central --------------- */
 
@@ -471,7 +464,28 @@ span img {
   justify-content: center;
 }
 
+/* ----- Add Post ----- */
+.add-post textarea {
+  background: var(--color-light);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  height: 15rem;
+  resize: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.add-post textarea:focus {
+  border: 1px solid var(--color-primary);
+}
+
+.add-post .div-image {
+  background: var(--color-light);
+  border-radius: var(--card-border-radius);
+  border: 1px solid var(--color-gray);
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+}
 
 
 /* --------------- Inicio Media Queryes --------------- */
