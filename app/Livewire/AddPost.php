@@ -51,6 +51,9 @@ class AddPost extends Component
     public function cancelAddPost()
     {
         $this->reset(['openModalAddPost', 'image', 'content', 'tags']);
+
+        //Limpiar errores
+        $this->resetErrorBag();
     }
 
     public function render()

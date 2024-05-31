@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
         "mmo/faker-images": "^0.9.0",
-        "munafio/chatify": "^1.6"
+        "munafio/chatify": "^1.6",
+        "wire-elements/modal": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
