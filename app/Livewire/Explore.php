@@ -12,7 +12,7 @@ class Explore extends Component
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')
-            ->orderBy('id')
+            ->orderBy('id', 'desc')
             ->with('user', 'tags', 'comments')
             ->get();
 

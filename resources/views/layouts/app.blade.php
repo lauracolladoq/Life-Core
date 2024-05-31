@@ -18,6 +18,10 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- CDN NOTIFY -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
     <!-- CDN TailWind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -65,8 +69,7 @@
                 @auth
                     <button data-toggle="modal" data-target="#myProfile" class="profile boxshadow">
                         <div class="profile-picture" id="my-profile-picture">
-                            <img src="{{ Storage::url(auth()->user()->avatar) }}"
-                                alt="My Profile Picture" />
+                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="My Profile Picture" />
                         </div>
                         <div class="profile-handle">
                             <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
@@ -187,11 +190,13 @@
     @livewireScripts
     <script>
         Livewire.on('message', txt => {
-            Swal.fire({
-                icon: "success",
-                title: txt,
-                showConfirmButton: false,
-                timer: 1500
+            new Notyf().success({
+                message: txt,
+                duration: 3000,
+                position: {
+                    x: 'center',
+                    y: 'top',
+                }
             });
         });
     </script>
