@@ -79,6 +79,11 @@ img {
   overflow: auto;
 }
 
+.profile-picture img{
+  width: 100%;
+  height: 100%;
+}
+
 .profile-picture:hover {
   opacity: 0.75;
 }
@@ -351,6 +356,10 @@ aside .menu-item:last-child {
   height: 2rem;
 }
 
+.comment .profile-picture img{
+  width: 100%;
+  height: 100%;
+}
 /* --------------- Fin Main Central --------------- */
 
 /* --------------- Inicio Main Izquierda --------------- */
