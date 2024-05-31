@@ -82,7 +82,7 @@
                                     <div class="comment">
                                         <div class="profile-picture">
                                             <img src="{{ Storage::url($comment->user->avatar) }}"
-                                                alt="" />
+                                                alt=""/>
                                         </div>
                                         <div class="comment-body">
                                             <p class="font-extrabold">{{ $comment->user->username }}</p>

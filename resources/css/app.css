@@ -76,7 +76,7 @@ img {
   height: 3rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .profile-picture img{
@@ -344,11 +344,10 @@ aside .menu-item:last-child {
 }
 
 .comment {
-  display: flex;
-  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
   gap: 1rem;
-  overflow: auto;
-  align-items: start;
+  margin-top: 1rem;
 }
 
 .comment .profile-picture {
