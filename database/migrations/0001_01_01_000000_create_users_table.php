@@ -21,7 +21,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             //$table->string('profile_photo_path', 2048)->nullable();
-            $table->string('avatar', 2048)->nullable()->default('avatar.png');
+            $table->string('avatar', 2048)->nullable()->default('avatar/avatar.png');
             // Middleware isAdmin
             $table->boolean('isAdmin')->default(false);
             $table->timestamps();

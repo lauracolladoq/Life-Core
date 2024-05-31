@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Storage::deleteDirectory('avatar');
+        Storage::makeDirectory('avatar');
 
         $users = User::factory(10)->create();
 

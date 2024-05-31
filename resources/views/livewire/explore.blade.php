@@ -8,7 +8,7 @@
                         <div class="feed-top">
                             <div class="user">
                                 <div class="profile-picture">
-                                    <img src="{{ Storage::url('users-avatar/' . $post->user->avatar) }}" alt="" />
+                                    <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
                                 </div>
                                 <div class="info">
                                     <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}</h4>
@@ -45,7 +45,7 @@
                         @elseif ($post->usersLikes->count() == 1)
                             <div class="liked-by">
                                 <span><img
-                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}"
                                         alt="" /></span>
                                 <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }}</b></p>
                             </div>
@@ -53,10 +53,10 @@
                             <!-- Si tiene más de un like, aparece que es likeado por dos personas aleatorias y cuantas personas más le han dado like -->
                             <div class="liked-by">
                                 <span><img
-                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}"
                                         alt="" /></span>
                                 <span><img
-                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}"
                                         alt="" /></span>
                                 <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }}</b> and
                                     <b>{{ $post->usersLikes->count() - 1 }}</b> others
@@ -80,7 +80,7 @@
                                 @foreach ($post->comments as $comment)
                                     <div class="comment ">
                                         <div class="profile-picture">
-                                            <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
+                                            <img src="{{ Storage::url($comment->user->avatar) }}"
                                                 alt="" class="bg-cover bg-no-repeat"/>
                                         </div>
                                         <div class="comment-body">

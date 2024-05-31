@@ -65,7 +65,7 @@
                 @auth
                     <button data-toggle="modal" data-target="#myProfile" class="profile boxshadow">
                         <div class="profile-picture" id="my-profile-picture">
-                            <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}"
+                            <img src="{{ Storage::url(auth()->user()->avatar) }}"
                                 alt="My Profile Picture" />
                         </div>
                         <div class="profile-handle">
@@ -163,7 +163,7 @@
                         <div class="modal-body">
                             <h1 class="font-extrabold text-3xl">{{ auth()->user()->name }}</h1>
                             <p class="font-bold text-md"><span>@</span>{{ auth()->user()->username }}</p>
-                            <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}" alt=""
+                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt=""
                                 class="profile-picture" />
                         </div>
                         <!-- Modal Footer -->
