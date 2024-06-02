@@ -84,4 +84,16 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class);
     }
+
+    //Relación N:M con User porque un user puede seguir a muchos user
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    //Relación N:M con User porque un user puede ser seguido por muchos user
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
 }

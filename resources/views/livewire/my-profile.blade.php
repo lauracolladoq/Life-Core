@@ -12,12 +12,12 @@
             </div>
             <div class="social-info">
                 <div>
-                    <h5 class="font-extrabold text-sm">Followers</h4>
-                        <p class="text-gry">44</p>
+                    <h5 class="font-extrabold text-sm">Followers</h5>
+                    <p class="text-gry">{{ auth()->user()->followers()->count()  }}</p>
                 </div>
                 <div>
                     <h5 class="font-extrabold text-sm">Following</h4>
-                        <p class="text-gry">21</p>
+                        <p class="text-gry">{{ auth()->user()->following()->count() }}</p>
                 </div>
             </div>
             <div>

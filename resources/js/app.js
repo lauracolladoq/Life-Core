@@ -8,6 +8,7 @@ function toggleComments() {
     document.querySelectorAll('[id^="toggleComments-"]').forEach(function (toggleButton) {
         //Añadimos un evento 'click' a cada botón
         toggleButton.addEventListener('click', function () {
+            console.log('click')
             //Obtenemos el id de la publicación a la que pertenece el botón
             var postId = this.id.split('-').pop();
             //Obtenemos el div que contiene los comentarios de la publicación
@@ -18,14 +19,16 @@ function toggleComments() {
     });
 }
 
-toggleComments();
+window.onload = function() {
+    toggleComments();
+};
 
 /**
  * Ver/ocultar el campo password
  *
  * @param {string} fieldId - ID del campo de password
  * @param {string} toggleButtonId - ID del botón que hará la acción
- */
+**/
 function togglePassword(fieldId, toggleButtonId) {
     // Obtenemos el campo a ver/ocultar y el botón que hará la acción
     const field = document.getElementById(fieldId);
@@ -44,3 +47,4 @@ function togglePassword(fieldId, toggleButtonId) {
 
 togglePassword('password', 'togglePassword');
 togglePassword('password_confirmation', 'toggleConfirmPassword');
+ 

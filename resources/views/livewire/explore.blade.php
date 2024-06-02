@@ -63,17 +63,22 @@
                                 </p>
                             </div>
                         @endif
-
                         <div class="caption">
-                            <p>
-                                <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
-                            </p>
+                            <!-- Si no tiene contenido, aparece vacío -->
+                            @if ($post->content)
+                                <p>
+                                    <span
+                                        class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
+                                </p>
+                            @endif
+                            @if ($post->tags->count())
                             <div class="tags pt-2 flex flex-wrap gap-2">
                                 @foreach ($post->tags as $tag)
                                     <span
                                         class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
                                 @endforeach
                             </div>
+                            @endif
                         </div>
                         <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
                             @if (count($post->comments))
