@@ -35,5 +35,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PostSeeder::class);
         Comment::factory(30)->create();
+
+        $this->call(FollowerSeeder::class);
     }
 }
