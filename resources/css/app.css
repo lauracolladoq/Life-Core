@@ -79,7 +79,7 @@ img {
   overflow: hidden;
 }
 
-.profile-picture img{
+.profile-picture img {
   width: 100%;
   height: 100%;
 }
@@ -355,10 +355,11 @@ aside .menu-item:last-child {
   height: 2rem;
 }
 
-.comment .profile-picture img{
+.comment .profile-picture img {
   width: 100%;
   height: 100%;
 }
+
 /* --------------- Fin Main Central --------------- */
 
 /* --------------- Inicio Main Izquierda --------------- */
@@ -470,6 +471,20 @@ span img {
 
 .profile-feed:hover {
   opacity: 0.75;
+}
+
+.post-options {
+  display: none;
+}
+
+.profile-feed:hover .post-options {
+  position: absolute;
+  top: 0;
+  padding: 1rem;
+  right: 0;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 .personal-info,

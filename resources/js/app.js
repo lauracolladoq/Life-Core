@@ -28,7 +28,7 @@ window.onload = function() {
  *
  * @param {string} fieldId - ID del campo de password
  * @param {string} toggleButtonId - ID del botón que hará la acción
-
+**/
 function togglePassword(fieldId, toggleButtonId) {
     // Obtenemos el campo a ver/ocultar y el botón que hará la acción
     const field = document.getElementById(fieldId);
@@ -47,4 +47,3 @@ function togglePassword(fieldId, toggleButtonId) {
 
 togglePassword('password', 'togglePassword');
 togglePassword('password_confirmation', 'toggleConfirmPassword');
- **/

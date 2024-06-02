@@ -32,6 +32,14 @@
                 <div class="feed-img">
                     <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
                 </div>
+                <div class="post-options">
+                    <button>
+                        <i class="fas fa-trash text-red-500"></i>
+                    </button>
+                    <button>
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
             </div>
             @endforeach
             @else
