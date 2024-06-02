@@ -29,4 +29,23 @@ class MyProfile extends Component
         //toogle para agregar o quitar like
         $post->usersLikes()->toggle(auth()->user()->id);
     }
+
+    public function deleteConfirmation(Post $post)
+    {
+        $this->dispatch('deleteConfirmation', $post->id);
+    }
+
+    #[On('eventDeletePost')]
+    public function delete(Post $post)
+    {
+        $post->delete();
+
+        // Se dispara el evento para actualizar los posts en las vistas Home, Explore y MyProfile
+        $this->dispatch('eventDeletePost')->to(Home::class);
+        $this->dispatch('eventDeletePost')->to(Explore::class);
+        $this->dispatch('eventDeletePost')->to(MyProfile::class);
+
+        //Mensaje de info
+        $this->dispatch("message", "Post deleted!");
+    }
 }

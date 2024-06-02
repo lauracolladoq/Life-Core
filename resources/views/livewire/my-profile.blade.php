@@ -33,7 +33,7 @@
                     <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
                 </div>
                 <div class="post-options">
-                    <button>
+                    <button wire:click="deleteConfirmation({{$post->id}})">
                         <i class="fas fa-trash text-red-500"></i>
                     </button>
                     <button>

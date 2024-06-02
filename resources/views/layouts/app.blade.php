@@ -199,6 +199,20 @@
                 }
             });
         });
+        Livewire.on('deleteConfirmation', postId => {
+            new Notyf().sucess({
+                message: "Are you sure you want to delete this post?",
+                duration: false,
+                position: {
+                    x: 'center',
+                    y: 'top',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.dispatchTo('my-profile', 'eventDeletePost', postId);
+                }
+            });
+        });
     </script>
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
