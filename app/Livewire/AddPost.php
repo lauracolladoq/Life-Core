@@ -15,10 +15,10 @@ class AddPost extends Component
     #[Validate(['required', 'image', 'max:2048'])]
     public $image;
 
-    #[Validate('nullable', 'string', 'max:255')]
+    #[Validate(['nullable', 'string', 'max:255'])]
     public string $content = '';
 
-    #[Validate('nullable', 'array', 'exists:tags,id')]
+    #[Validate(['nullable', 'array', 'exists:tags,id'])]
     public array $tags = [];
 
     public bool $openModalAddPost = false;
@@ -48,6 +48,7 @@ class AddPost extends Component
         $this->cancelAddPost();
     }
 
+    
     public function cancelAddPost()
     {
         $this->reset(['openModalAddPost', 'image', 'content', 'tags']);

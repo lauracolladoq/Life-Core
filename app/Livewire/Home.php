@@ -14,6 +14,7 @@ class Home extends Component
     {
         // Obtiene el usuario logeado
         $user = User::find(auth()->user()->id);
+
         // Obtiene los ids de los usuarios que sigue el usuario logeado
         $followingIds = $user->following()->pluck('follower_id');
 
