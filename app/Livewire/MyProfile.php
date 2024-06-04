@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -39,6 +40,8 @@ class MyProfile extends Component
     #[On('eventDeletePost')]
     public function delete(Post $post)
     {
+        // Se elimina la imagen del post y el post
+        Storage::delete($post->image);
         $post->delete();
 
         // Se dispara el evento para actualizar la vista MyProfile una vez eliminado el post
