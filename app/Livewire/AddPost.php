@@ -43,7 +43,7 @@ class AddPost extends Component
         $this->dispatch('eventAddPost')->to(Explore::class);
         $this->dispatch('eventAddPost')->to(MyProfile::class);
 
-        //Mensaje de info
+        // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "New post created!");
         $this->cancelAddPost();
     }

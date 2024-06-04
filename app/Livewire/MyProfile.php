@@ -9,6 +9,7 @@ use Livewire\Component;
 class MyProfile extends Component
 {
     #[On('eventAddPost')]
+    #[On('eventDeletedPost')]
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')
@@ -40,12 +41,10 @@ class MyProfile extends Component
     {
         $post->delete();
 
-        // Se dispara el evento para actualizar los posts en las vistas Home, Explore y MyProfile
-        $this->dispatch('eventDeletePost')->to(Home::class);
-        $this->dispatch('eventDeletePost')->to(Explore::class);
-        $this->dispatch('eventDeletePost')->to(MyProfile::class);
+        // Se dispara el evento para actualizar la vista MyProfile una vez eliminado el post
+        $this->dispatch('eventDeletedPost')->to(MyProfile::class);
 
-        //Mensaje de info
+        // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "Post deleted!");
     }
 }

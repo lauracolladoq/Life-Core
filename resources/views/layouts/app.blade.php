@@ -18,6 +18,9 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- CDN SWEETALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- CDN NOTIFY -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
@@ -199,17 +202,19 @@
                 }
             });
         });
+
         Livewire.on('deleteConfirmation', postId => {
-            new Notyf().sucess({
-                message: "Are you sure you want to delete this post?",
-                duration: false,
-                position: {
-                    x: 'center',
-                    y: 'top',
-                }
+            Swal.fire({
+                position: "top",
+                title: "Are you sure?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3BBF5C",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Livewire.dispatchTo('my-profile', 'eventDeletePost', postId);
+                    Livewire.dispatchTo('my-profile', 'eventDeletePost', postId)
                 }
             });
         });
