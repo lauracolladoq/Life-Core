@@ -46,4 +46,14 @@ class Post extends Model
             set: fn ($v) => ucfirst($v)
         );
     }
+
+    //Método para obtener los tags del post
+    public function getTagsId(): array
+    {
+        $tags = [];
+        foreach ($this->tags as $tag) {
+            $tags[] = $tag->id;
+        }
+        return $tags;
+    }
 }

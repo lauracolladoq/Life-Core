@@ -67,26 +67,25 @@
                             <!-- Si no tiene contenido, aparece vacío -->
                             @if ($post->content)
                                 <p>
-                                    <span
-                                        class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
+                                    <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->content }}
                                 </p>
                             @endif
                             @if ($post->tags->count())
-                            <div class="tags pt-2 flex flex-wrap gap-2">
-                                @foreach ($post->tags as $tag)
-                                    <span
-                                        class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
-                                @endforeach
-                            </div>
+                                <div class="tags pt-2 flex flex-wrap gap-2">
+                                    @foreach ($post->tags as $tag)
+                                        <span
+                                            class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
                         <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
+                            <!-- Si tiene comentarios, se muestran -->
                             @if (count($post->comments))
                                 @foreach ($post->comments as $comment)
-                                    <div class="comment ">
+                                    <div class="comment">
                                         <div class="profile-picture">
-                                            <img src="{{ Storage::url($comment->user->avatar) }}"
-                                                alt="" class="bg-cover bg-no-repeat"/>
+                                            <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
                                         </div>
                                         <div class="comment-body">
                                             <p class="font-extrabold">{{ $comment->user->username }}</p>
@@ -96,9 +95,13 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <!-- Si no tiene comentarios, aparece un mensaje -->
                             @else
                                 <p>No comments yet</p>
                             @endif
+                        </div>
+                        <div class="add-comment">
+                            @livewire('add-comment', ['postId' => $post->id])
                         </div>
                     </div>
                 @endforeach

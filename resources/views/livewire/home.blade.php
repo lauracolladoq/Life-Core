@@ -101,6 +101,9 @@
                                     <p>No comments yet</p>
                                 @endif
                             </div>
+                            <div class="add-comment">
+                                @livewire('add-comment', ['postId' => $post->id])
+                            </div>
                         </div>
                     @endforeach
                 </div>

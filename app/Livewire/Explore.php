@@ -9,6 +9,7 @@ use Livewire\Component;
 class Explore extends Component
 {
     #[On('eventAddPost')]
+    #[On('eventAddComment')]
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')

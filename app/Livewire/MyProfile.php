@@ -2,13 +2,18 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\UpdatePost;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class MyProfile extends Component
 {
+    public UpdatePost $form;
+    public bool $openModalUpdatePost = false;
+
     #[On('eventAddPost')]
     #[On('eventDeletedPost')]
     public function render()
@@ -16,14 +21,15 @@ class MyProfile extends Component
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')
             ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'desc')
-            ->with('user', 'tags', 'comments')
+            ->with('user', 'comments')
             ->get();
 
+        $tags = Tag::all();
         $myLikes = Post::whereHas('usersLikes', function ($q) {
             $q->where('user_id', auth()->user()->id);
         })->get();
 
-        return view('livewire.my-profile', compact('posts', 'myLikes'));
+        return view('livewire.my-profile', compact('posts', 'myLikes', 'tags'));
     }
 
     public function like(Post $post)
@@ -49,5 +55,15 @@ class MyProfile extends Component
 
         // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "Post deleted!");
+    }
+
+    public function edit(Post $post)
+    {
+        $this->form->setPost($post);
+        $this->openModalUpdatePost = true;
+    }
+
+    public function update(){
+
     }
 }
