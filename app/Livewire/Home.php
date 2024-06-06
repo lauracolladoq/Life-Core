@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Livewire\Attributes\On;
@@ -38,4 +39,12 @@ class Home extends Component
         //toogle para agregar o quitar like
         $post->usersLikes()->toggle(auth()->user()->id);
     } 
+
+    public function delete(Comment $comment)
+    {
+        $comment->delete();
+
+        // Se dispara el evento para mostrar el mensaje informativo
+        $this->dispatch("message", "Comment deleted!");
+    }
 }

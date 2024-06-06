@@ -83,24 +83,42 @@
                             <!-- Si tiene comentarios, se muestran -->
                             @if (count($post->comments))
                                 @foreach ($post->comments as $comment)
-                                    <div class="comment">
-                                        <div class="profile-picture">
-                                            <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                    <!-- Si el comentario es del usuario logeado, se añade el botón de delete -->
+                                    @if ($comment->user_id == auth()->user()->id)
+                                        <div class="comment-user">
+                                            <div class="profile-picture">
+                                                <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                            </div>
+                                            <div class="comment-body">
+                                                <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                                <p>
+                                                    {{ $comment->content }}
+                                                </p>
+                                            </div>
+                                            <button wire:click="delete({{ $comment->id }})">
+                                                <i class="fas fa-trash text-red-500"></i>
+                                            </button>
                                         </div>
-                                        <div class="comment-body">
-                                            <p class="font-extrabold">{{ $comment->user->username }}</p>
-                                            <p>
-                                                {{ $comment->content }}
-                                            </p>
+                                    @else
+                                        <div class="comment">
+                                            <div class="profile-picture">
+                                                <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                            </div>
+                                            <div class="comment-body">
+                                                <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                                <p>
+                                                    {{ $comment->content }}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                 @endforeach
                                 <!-- Si no tiene comentarios, aparece un mensaje -->
                             @else
                                 <p>No comments yet</p>
                             @endif
                         </div>
-                        <div class="add-comment">
+                        <div class="pt-2">
                             @livewire('add-comment', ['postId' => $post->id])
                         </div>
                     </div>

@@ -172,7 +172,7 @@ main {
 
 .main-container {
   display: grid;
-  grid-template-columns: 18vw auto 20vw;
+  grid-template-columns: 18vw auto 18vw;
   position: relative;
   column-gap: 2rem;
 }
@@ -350,12 +350,30 @@ aside .menu-item:last-child {
   margin-top: 1rem;
 }
 
+.comment-user {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem ;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .comment .profile-picture {
   width: 2rem;
   height: 2rem;
 }
 
 .comment .profile-picture img {
+  width: 100%;
+  height: 100%;
+}
+
+.comment-user .profile-picture {
+  width: 2rem;
+  height: 2rem;
+}
+
+.comment-user .profile-picture img {
   width: 100%;
   height: 100%;
 }
