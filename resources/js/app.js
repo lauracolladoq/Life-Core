@@ -19,7 +19,7 @@ function toggleComments() {
     });
 }
 
-window.onload = function() {
+window.onload = function () {
     toggleComments();
 };
 

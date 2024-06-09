@@ -29,10 +29,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- CDN Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/theme.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -118,11 +118,11 @@
                         <h3 class="font-extrabold">Messages</h3>
                     </x-nav-link>
 
-                    <a href="" class="menu-item">
+                    <x-nav-link href="#theme" class="menu-item" data-toggle="modal">
                         <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
                                 alt="paint-board" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Theme</h3>
-                    </a>
+                    </x-nav-link>
                 </aside>
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
@@ -187,7 +187,75 @@
             </div>
         @endauth
         <!---------- Fin Modal My Profile ---------->
-        <!------------------------------------------- Fin Modales -------------------------------------------->
+
+        <!---------- Modal Theme ---------->
+        <div class="modal p-0 fade" id="theme">
+            <div class="modal-dialog modal-dialog-centered profile-modal">
+                <div class="modal-content modal-style">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="theme-customize-popup-box">
+                            <h1 class="font-extrabold text-3xl">Customize Your Theme</h2>
+                                <p class="font-bold">Manage your font size, color and background</p>
+                                <!-- Font size -->
+                                <div class="font-size">
+                                    <h4 class="font-bold">Font Size</h4>
+                                    <div>
+                                        <div>
+                                            <h6>Aa</h6>
+                                        </div>
+                                        <div class="choose-size">
+                                            <span class="font-size-1"></span>
+                                            <span class="font-size-2"></span>
+                                            <span class="font-size-3 active"></span>
+                                            <span class="font-size-4"></span>
+                                        </div>
+                                        <div>
+                                            <h3>Aa</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Primary Colors-->
+                                <div class="colors">
+                                    <h4 class="font-bold">Color</h4>
+                                    <div class="choose-color">
+                                        <span class="color-1"></span>
+                                        <span class="color-2 "></span>
+                                        <span class="color-3 "></span>
+                                        <span class="color-4 "></span>
+                                        <span class="color-5 active"></span>
+                                        <span class="color-6 "></span>
+                                        <span class="color-7 "></span>
+                                    </div>
+                                </div>
+                                <!-- Background Colors -->
+                                <div class="background">
+                                    <h4 class="font-bold">Background </h4>
+                                    <div class="choose-bg w-50">
+                                        <div class="bg1 active">
+                                            <span></span>
+                                            <h5>Light</h5>
+                                        </div>
+                                        <div class="bg2">
+                                            <span></span>
+                                            <h5>Dark</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------- Fin Modal Theme ---------->
+
+            <!------------------------------------------- Fin Modales -------------------------------------------->
     </main>
     @stack('modals')
     @livewireScripts
