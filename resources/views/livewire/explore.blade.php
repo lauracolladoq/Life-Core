@@ -84,6 +84,7 @@
                             @if (count($post->comments))
                                 @foreach ($post->comments as $comment)
                                     <!-- Si el comentario es del usuario logeado, se añade el botón de delete -->
+                                    @auth
                                     @if ($comment->user_id == auth()->user()->id)
                                         <div class="comment-user">
                                             <div class="profile-picture">
@@ -99,6 +100,7 @@
                                                 <i class="fas fa-trash text-red-500"></i>
                                             </button>
                                         </div>
+                                    @endauth
                                     @else
                                         <div class="comment">
                                             <div class="profile-picture">
