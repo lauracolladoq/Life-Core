@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TagResource\Pages;
-use App\Filament\Resources\TagResource\RelationManagers;
 use App\Models\Tag;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TagResource extends Resource
 {
@@ -25,8 +22,9 @@ class TagResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
-                Forms\Components\TextInput::make('color')
-                    ->required(),
+                Forms\Components\ColorPicker::make('color')
+                    ->required()
+                    ->hex(),
             ]);
     }
 
@@ -35,23 +33,19 @@ class TagResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('color')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\ColorColumn::make('color')
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label(''),
+
+                Tables\Actions\EditAction::make()->label(''),
+
+                Tables\Actions\DeleteAction::make()->label(''),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

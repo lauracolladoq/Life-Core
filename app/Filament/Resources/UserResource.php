@@ -3,15 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
@@ -23,7 +22,22 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\FileUpload::make('avatar')
+                    ->image()
+                    ->required(),
+                Forms\Components\Grid::make(1)
+                    ->schema([
+                        Forms\Components\TextInput::make('username')
+                            ->required(),
+                        Forms\Components\TextInput::make('name')
+                            ->required(),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required(),
+                        Forms\Components\TextInput::make('created_at')
+                            ->email()
+                            ->required()
+                    ])->columnSpan(1)
             ]);
     }
 
@@ -31,14 +45,31 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\ImageColumn::make('avatar'),
+                Tables\Columns\TextColumn::make('username')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->date()
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->label(''),
+
+                Tables\Actions\EditAction::make()->label(''),
+
+                Tables\Actions\DeleteAction::make()->label(''),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -59,8 +90,35 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
+            'view' => Pages\ViewUser::route('/{record}')
         ];
+    }
+
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Components\Section::make()
+                    ->schema([
+                        Components\Grid::make(3)
+                            ->schema([
+                                Components\ImageEntry::make('avatar')
+                                    ->grow(false),
+                                Components\TextEntry::make('username')
+                                    ->badge()
+                                    ->color('info'),
+                                Components\TextEntry::make('created_at')
+                                    ->badge()
+                                    ->date()
+                                    ->color('success')
+                                    ->columns(2),
+                                Components\TextEntry::make('name'),
+                                Components\TextEntry::make('email'),
+                            ])
+                    ])
+
+            ]);
     }
 }
