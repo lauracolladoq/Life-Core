@@ -30,6 +30,7 @@ function changeTheme() {
             }
 
             document.querySelector("html").style.fontSize = fontSizeValue;
+            localStorage.setItem("fontSize", fontSizeValue);
         });
     });
 
@@ -71,6 +72,7 @@ function changeTheme() {
             }
 
             root.style.setProperty("--primary-color-hue", primaryHue);
+            localStorage.setItem("primaryColorHue", primaryHue);
         });
     });
 
@@ -96,6 +98,7 @@ function changeTheme() {
         root.style.setProperty("--color-light-light-theme", lightColorLightTheme);
         root.style.setProperty("--color-white-light-theme", whiteColorLightTheme);
         icon("dark");
+        localStorage.setItem("theme", "dark");
     });
 
     // Cambiar el tema de la aplicación a claro
@@ -111,6 +114,7 @@ function changeTheme() {
         root.style.setProperty("--color-light-light-theme", lightColorLightTheme);
         root.style.setProperty("--color-white-light-theme", whiteColorLightTheme);
         icon("light");
+        localStorage.setItem("theme", "light");
     });
 
     // Cambiar el color de fondo de los iconos del menú
@@ -131,6 +135,42 @@ function changeTheme() {
             }
         });
     };
+
+    // Aplicar los cambios almacenados en localStorage al cargar la página
+    const applyStoredSettings = () => {
+        const storedFontSize = localStorage.getItem("fontSize");
+        if (storedFontSize) {
+            document.querySelector("html").style.fontSize = storedFontSize;
+            fontSizes.forEach((size) => {
+                size.classList.remove("active");
+                if (size.style.fontSize === storedFontSize) {
+                    size.classList.add("active");
+                }
+            });
+        }
+
+        const storedPrimaryColorHue = localStorage.getItem("primaryColorHue");
+        if (storedPrimaryColorHue) {
+            root.style.setProperty("--primary-color-hue", storedPrimaryColorHue);
+            colorPallette.forEach((color) => {
+                color.classList.remove("active");
+                if (parseInt(color.dataset.hue) === parseInt(storedPrimaryColorHue)) {
+                    color.classList.add("active");
+                }
+            });
+        }
+
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+            if (storedTheme === "dark") {
+                bg2.click();
+            } else {
+                bg1.click();
+            }
+        }
+    };
+
+    applyStoredSettings();
 }
 
 changeTheme();
