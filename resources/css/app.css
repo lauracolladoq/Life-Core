@@ -120,6 +120,13 @@ img {
   color: var(--color-gray);
 }
 
+.btn-lg {
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
 /* --------------- Navbar --------------- */
 nav {
   width: 100%;
@@ -256,14 +263,6 @@ aside .menu-item:last-child {
   border-bottom-left-radius: var(--card-border-radius);
   border-bottom-right-radius: var(--card-border-radius);
 }
-
-.btn-lg {
-  padding: 1rem 0;
-  width: 100%;
-  text-align: center;
-  margin-top: 1rem;
-}
-
 /* --------------- Fin Main Izquierda --------------- */
 
 /* --------------- Main Central  --------------- */
@@ -463,8 +462,6 @@ span img {
 /* Para cambiar el color de los iconos al cambiar el tema de color */
 .icon-bg {
   filter: invert(1);
-  padding: 0.2rem;
-  border-radius: 0.2rem;
 }
 
 

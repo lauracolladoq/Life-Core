@@ -127,6 +127,7 @@ function changeTheme() {
         menuItems.forEach((item) => {
             const icon = item.querySelector("span img");
             if (icon) {
+
                 if (theme === "dark") {
                     icon.classList.add("icon-bg");
                 } else if (theme === "light") {
