@@ -26,6 +26,6 @@ Route::get('/', function () {
 
 Route::get('/explore', Explore::class)->name('explore');
 
-Route::get('/user-profile/{user}', UserProfile::class)->name('user-profile');
-
 Route::get('/trending-tag/{tag}', TrendingTag::class)->name('trending-tag');
+
+Route::get('/user-profile/{user}', UserProfile::class)->name('user-profile');

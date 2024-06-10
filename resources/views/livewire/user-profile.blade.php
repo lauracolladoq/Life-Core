@@ -21,18 +21,19 @@
                 </div>
             </div>
             <div>
-                <button wire:click="follow({{ $user->id }})" class="btn btn-primary">
-                    <!-- Si el usuario autenticado ya sigue al usuario, el botón cambia a Unfollow -->
-                    @if ($user->followers->contains(auth()->user()))
-                        Unfollow
-                    <!-- Si no sigue al usuario, el botón cambia a Follow -->
-                    @else
-                        Follow
-                    @endif
-                </button>
+                @auth
+                    <button wire:click="follow({{ $user->id }})" class="btn btn-primary">
+                        <!-- Si el usuario autenticado ya sigue al usuario, el botón cambia a Unfollow -->
+                        @if ($user->followers->contains(auth()->user()))
+                            Unfollow
+                            <!-- Si no sigue al usuario, el botón cambia a Follow -->
+                        @else
+                            Follow
+                        @endif
+                    </button>
+                @endauth
             </div>
         </div>
-
         <div class="profile-feeds">
             @if (count($posts))
                 @foreach ($posts as $post)

@@ -6,7 +6,8 @@
         <!-- Si hay usuarios que coincidan con la búsqueda se muestran -->
         @if (count($users))
             @foreach ($users as $user)
-                <a href="" class="search-result pt-2 text-center flex gap-2 align-middle justify-start">
+                <a href="{{ route('user-profile', $user->id) }}"
+                    class="search-result pt-2 text-center flex gap-2 align-middle justify-start">
                     <div class="profile-picture">
                         <img src="{{ Storage::url($user->avatar) }}" alt="" />
                     </div>

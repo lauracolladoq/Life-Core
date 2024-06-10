@@ -517,6 +517,7 @@ span img {
   display: flex;
   text-align: center;
   align-items: center;
+  justify-content: center;
 }
 
 .profile-info {
