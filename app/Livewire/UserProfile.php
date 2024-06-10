@@ -27,4 +27,10 @@ class UserProfile extends Component
 
         return view('livewire.user-profile', compact('posts'));
     }
+
+    public function follow(User $user)
+    {
+        //toogle para seguir o dejar de seguir
+        $this->user->followers()->toggle(auth()->user()->id);
+    }
 }

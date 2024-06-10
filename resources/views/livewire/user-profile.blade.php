@@ -21,28 +21,25 @@
                 </div>
             </div>
             <div>
-                @if(auth()->user()->id === $user->id)
-                    @livewire('edit-profile')
-                @endif
+                <button wire:click="follow({{ $user->id }})" class="btn btn-primary">
+                    <!-- Si el usuario autenticado ya sigue al usuario, el botón cambia a Unfollow -->
+                    @if ($user->followers->contains(auth()->user()))
+                        Unfollow
+                    <!-- Si no sigue al usuario, el botón cambia a Follow -->
+                    @else
+                        Follow
+                    @endif
+                </button>
             </div>
         </div>
 
         <div class="profile-feeds">
-            @if(count($posts))
-                @foreach($posts as $post)
+            @if (count($posts))
+                @foreach ($posts as $post)
                     <div class="profile-feed">
                         <div class="feed-img">
-                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
-                        </div>
-                        <div class="post-options">
-                            @if(auth()->user()->id === $user->id)
-                                <button wire:click="deleteConfirmation({{ $post->id }})">
-                                    <i class="fas fa-trash text-red-500"></i>
-                                </button>
-                                <button wire:click="edit({{ $post->id }})">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            @endif
+                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover"
+                                alt="" />
                         </div>
                     </div>
                 @endforeach
