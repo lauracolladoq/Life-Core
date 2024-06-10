@@ -7,13 +7,19 @@ use Livewire\Component;
 
 class Searcher extends Component
 {
-    public string $string = "Buscar ...";
-    public bool $ocultar=true;
+    public $string = '';
+    public bool $showResults = false;
 
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->string . '%')->orWhere('username', 'like', '%' . $this->string . '%')
-            ->get();
+        $users = [];
+
+        if (!empty($this->string)) {
+            $users = User::where('name', 'like', '%' . $this->string . '%')
+                ->orWhere('username', 'like', '%' . $this->string . '%')
+                ->get();
+        }
+
         return view('livewire.searcher', compact('users'));
     }
 }
