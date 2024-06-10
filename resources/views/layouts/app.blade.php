@@ -1,9 +1,3 @@
-<?php
-
-use App\Models\Tag;
-$tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
-?>
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -148,21 +142,7 @@ $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
 
             <!-- ------------------------------------------- Inicio Sección Derecha ------------------------------------------- -->
             <div class="main-right">
-                <div class="trending">
-                    <div class="flex items-center justify-center pb-3 gap-2">
-                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire"
-                                width="48" height="48" class="m-0" /></span>
-                        <h3 class="font-extrabold">Trending</h4>
-                    </div>
-                    <div>
-                        <div class="flex flex-col gap-2 text-center items-center">
-                            @foreach ($tags as $tag)
-                                <a href=""
-                                    class="bg-[{{ $tag->color }}] rounded-full w-1/2">{{ $tag->name }}</span>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+                @livewire('trending-tags')
             </div>
             <!-- ------------------------------------------- Fin Sección Derecha ------------------------------------------- -->
         </div>
