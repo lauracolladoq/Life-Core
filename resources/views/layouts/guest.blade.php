@@ -9,10 +9,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Google Fonts -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 
+    <style>
+        .nunito-uno {
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+    </style>
     <!-- CDN TailWind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -24,7 +33,7 @@
 </head>
 
 <body>
-    <div class="font-nunito text-black antialiased">
+    <div class="nunito-uno text-black antialiased">
         {{ $slot }}
     </div>
 

@@ -128,13 +128,15 @@ $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
                                 alt="paint-board" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Theme</h3>
                     </x-nav-link>
-
-                    <!-- if (auth()->user()->isAdmin) -->
-                    <x-nav-link id="admin-link" class="menu-item">
-                        <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
-                                alt="paint-board" width="48" height="48" /></span>
-                        <h3 class="font-extrabold">Admin Panel</h3>
-                    </x-nav-link>
+                    @auth
+                    @if (auth()->user()->isAdmin)
+                        <x-nav-link id="admin-link" class="menu-item">
+                            <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
+                                    alt="paint-board" width="48" height="48" /></span>
+                            <h3 class="font-extrabold">Admin Panel</h3>
+                        </x-nav-link>
+                    @endif
+                @endauth
                 </aside>
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>

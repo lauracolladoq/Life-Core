@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-authentication-card>
-        <div class="font-nunito grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+        <div class="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
             <div class="md:max-w-md w-full sm:px-6 py-4">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf

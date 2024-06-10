@@ -1,8 +1,11 @@
 <div>
     <i class="fa fa-search"></i>
-    <input type="search" placeholder="Search User" wire:model.live="string" />
+    <input type="search" placeholder="Search User" wire:model.live="string" wire:mouseenter="$set('ocultar', false)" />
     @if (count($users))
-        <div class="search-results">
+        <div @class([
+                "search-results", 
+                'invisible'=> $ocultar,
+                ])>
             @foreach ($users as $user)
                 <a href="" class="search-result pt-2 text-center flex gap-2 align-middle justify-start">
                     <div class="profile-picture">
@@ -16,6 +19,6 @@
             @endforeach
         </div>
     @else
-        <p class="pt-2 text-center">No results found</p>
+        <p class="pt-2 text-center @if($ocultar) invisible @endif" >No results found</p>
     @endif
 </div>

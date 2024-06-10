@@ -9,7 +9,7 @@
                     @foreach ($posts as $post)
                         <div class="feed">
                             <div class="feed-top">
-                                <a href="{{ route('user-profile', $post->user) }}" class="user">
+                                <a href="{{ route('user-profile', $post->user->id) }}" class="user">
                                     <div class="profile-picture">
                                         <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
                                     </div>

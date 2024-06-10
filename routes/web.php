@@ -4,6 +4,7 @@ use App\Livewire\Explore;
 use App\Livewire\Home;
 use App\Livewire\MyProfile;
 use App\Livewire\UserProfile;
+use Filament\Pages\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware([
@@ -25,3 +26,5 @@ Route::get('/', function () {
 Route::get('/explore', Explore::class)->name('explore');
 
 Route::get('/user-profile/{user}', UserProfile::class)->name('user-profile');
+
+//Route::get('/admin', Dashboard::class)->name('admin');
