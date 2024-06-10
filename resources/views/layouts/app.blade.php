@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Tag;
-    $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
+$tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
 ?>
 
 <!DOCTYPE html>
@@ -54,8 +54,7 @@ use App\Models\Tag;
                 <h3>Life <span>Core</span></h3>
             </a>
             <div class="search-bar boxshadow">
-                <i class="fa fa-search"></i>
-                <input placeholder="Search User" />
+                @livewire('searcher')
             </div>
             @auth
                 <!-- Si está autenticado aparece el boton de Add Post -->
@@ -131,11 +130,11 @@ use App\Models\Tag;
                     </x-nav-link>
 
                     <!-- if (auth()->user()->isAdmin) -->
-                        <x-nav-link id="admin-link" class="menu-item">
-                            <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
-                                    alt="paint-board" width="48" height="48" /></span>
-                            <h3 class="font-extrabold">Admin Panel</h3>
-                        </x-nav-link>
+                    <x-nav-link id="admin-link" class="menu-item">
+                        <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
+                                alt="paint-board" width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Admin Panel</h3>
+                    </x-nav-link>
                 </aside>
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
@@ -149,14 +148,16 @@ use App\Models\Tag;
             <div class="main-right">
                 <div class="trending">
                     <div class="flex items-center justify-center pb-3 gap-2">
-                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire" width="48" height="48" class="m-0" /></span>
+                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire"
+                                width="48" height="48" class="m-0" /></span>
                         <h3 class="font-extrabold">Trending</h4>
                     </div>
                     <div>
                         <div class="flex flex-col gap-2 text-center items-center">
                             @foreach ($tags as $tag)
-                            <a href="" class="bg-[{{ $tag->color }}] rounded-full w-1/2">{{ $tag->name }}</span>
-                                @endforeach
+                                <a href=""
+                                    class="bg-[{{ $tag->color }}] rounded-full w-1/2">{{ $tag->name }}</span>
+                            @endforeach
                         </div>
                     </div>
                 </div>

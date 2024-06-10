@@ -108,7 +108,7 @@ img {
   background: var(--color-primary);
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background: var(--color-primary);
 }
 
@@ -172,6 +172,11 @@ nav .search-bar input[type]::placeholder {
 
 .logo span {
   color: var(--color-primary);
+}
+
+.search-results {
+  max-height: 15rem;
+  overflow-y: auto;
 }
 
 /* --------------- Main --------------- */
@@ -263,6 +268,7 @@ aside .menu-item:last-child {
   border-bottom-left-radius: var(--card-border-radius);
   border-bottom-right-radius: var(--card-border-radius);
 }
+
 /* --------------- Fin Main Izquierda --------------- */
 
 /* --------------- Main Central  --------------- */
@@ -631,7 +637,7 @@ span img {
   margin: 1rem 0;
 }
 
-.font-size{
+.font-size {
   display: flex;
   flex-direction: column;
   align-items: center;
