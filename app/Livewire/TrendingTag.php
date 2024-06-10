@@ -21,7 +21,7 @@ class TrendingTag extends Component
     {
         $tag = $this->tag;
 
-        $posts = Post::with('tags')->whereHas('tags', function ($query) use ($tag) {
+        $posts = Post::with('user', 'tags', 'comments')->whereHas('tags', function ($query) use ($tag) {
             $query->where('tag_id', $tag->id);
         })->get();
 
@@ -41,7 +41,7 @@ class TrendingTag extends Component
         $post->usersLikes()->toggle(auth()->user()->id);
     }
 
-    
+
     public function delete(Comment $comment)
     {
         $comment->delete();
