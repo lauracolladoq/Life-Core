@@ -14,6 +14,8 @@ class Searcher extends Component
     {
         $users = [];
 
+        // Si el string no está vacío, buscamos usuarios que coincidan con el nombre o el username ya que 
+        // si el string está vacío, muestra todos los usuarios
         if (!empty($this->string)) {
             $users = User::where('name', 'like', '%' . $this->string . '%')
                 ->orWhere('username', 'like', '%' . $this->string . '%')
