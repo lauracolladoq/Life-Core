@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AddComment extends Component
 {
-    #[Validate(['nullable', 'string', 'max:255'])]
+    #[Validate(['required', 'string', 'max:255'])]
     public string $content = '';
 
     public int $postId;
@@ -24,6 +24,7 @@ class AddComment extends Component
 
         $this->dispatch('eventAddComment')->to(Explore::class);
         $this->dispatch('eventAddComment')->to(Home::class);
+        $this->dispatch('eventAddComment')->to(TrendingTag::class);
 
         // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "Comment created!");

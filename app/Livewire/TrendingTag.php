@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Tag;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class TrendingTag extends Component
@@ -17,6 +18,8 @@ class TrendingTag extends Component
         $this->tag = $tag;
     }
 
+    #[On('eventAddPost')]
+    #[On('eventAddComment')]
     public function render()
     {
         $tag = $this->tag;

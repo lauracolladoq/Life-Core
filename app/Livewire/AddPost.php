@@ -42,6 +42,7 @@ class AddPost extends Component
         $this->dispatch('eventAddPost')->to(Home::class);
         $this->dispatch('eventAddPost')->to(Explore::class);
         $this->dispatch('eventAddPost')->to(MyProfile::class);
+        $this->dispatch('eventAddPost')->to(TrendingTag::class);
 
         // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "New post created!");
