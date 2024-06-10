@@ -24,9 +24,12 @@ class TrendingTag extends Component
     {
         $tag = $this->tag;
 
-        $posts = Post::with('user', 'tags', 'comments')->whereHas('tags', function ($query) use ($tag) {
+        $posts = Post::with('user', 'tags', 'comments')
+            ->whereHas('tags', function ($query) use ($tag) {
             $query->where('tag_id', $tag->id);
-        })->get();
+            })
+            ->latest()
+            ->get();
 
         if (auth()->check()) {
             $myLikes = Post::whereHas('usersLikes', function ($q) {

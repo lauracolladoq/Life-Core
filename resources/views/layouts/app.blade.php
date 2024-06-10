@@ -104,12 +104,6 @@
                         <h3 class="font-extrabold">Explore</h3>
                     </x-nav-link>
 
-                    <a href="" class="menu-item">
-                        <span><img src="https://cdn.hugeicons.com/icons/notification-01-stroke-rounded.svg"
-                                alt="notification-01" width="48" height="48" /></span>
-                        <h3 class="font-extrabold">Notifications</h3>
-                    </a>
-
                     <x-nav-link href="{{ route('chatify') }}" :active="request()->routeIs('chatify')"
                         class="menu-item {{ request()->routeIs('chatify') ? 'active' : '' }}">
                         <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="message-02"

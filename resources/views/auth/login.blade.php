@@ -6,10 +6,10 @@
                     @csrf
                     <div class="mb-12">
                         <h3 class="text-3xl font-extrabold">Sign in to your account</h3>
-                        <p class="text-sm mt-4 ">Don't have an account yet? <a href="{{ route('register') }}" class="text-blue-500 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</a></p>
+                        <p class="text-md mt-4 font-semibold">Don't have an account yet? <a href="{{ route('register') }}" class="text-blue-500 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</a></p>
                     </div>
                     <div>
-                        <x-label class="text-xs block mb-2" for="email" value="{{ __('Email') }}" />
+                        <x-label class="text-sm font-semibold block mb-2" for="email" value="{{ __('Email') }}" />
                         <div class="relative flex items-center">
                             <x-input id="email" class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
 
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <x-label class="text-xs block mb-2" for="password" value="{{ __('Password') }}" />
+                        <x-label class="text-sm font-semibold block mb-2" for="password" value="{{ __('Password') }}" />
                         <div class="relative flex items-center">
                             <x-input id="password" class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" type="password" name="password" required autocomplete="current-password" placeholder="Enter password" />
                             <svg id="togglePassword" xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
@@ -56,7 +56,7 @@
                             {{ __('Log in') }}
                         </x-button>
                     </div>
-                    <x-validation-errors class="text-xs mt-4 text-center" />
+                    <x-validation-errors class="text-sm mt-4 text-center" />
 
                     <p class="my-8 text-sm text-gray-400 text-center">or continue with</p>
                     <div class="space-x-8 flex justify-center">
