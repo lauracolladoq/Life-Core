@@ -1,3 +1,9 @@
+<?php
+
+use App\Models\Tag;
+    $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->get();
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -123,6 +129,13 @@
                                 alt="paint-board" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Theme</h3>
                     </x-nav-link>
+
+                    <!-- if (auth()->user()->isAdmin) -->
+                        <x-nav-link id="admin-link" class="menu-item">
+                            <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
+                                    alt="paint-board" width="48" height="48" /></span>
+                            <h3 class="font-extrabold">Admin Panel</h3>
+                        </x-nav-link>
                 </aside>
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
@@ -135,18 +148,15 @@
             <!-- ------------------------------------------- Inicio Sección Derecha ------------------------------------------- -->
             <div class="main-right">
                 <div class="trending">
-                    <div class="trending-header">
-                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire"
-                                width="48" height="48" class="m-0" /></span>
+                    <div class="flex items-center justify-center pb-3 gap-2">
+                        <span><img src="https://cdn.hugeicons.com/icons/fire-stroke-rounded.svg" alt="fire" width="48" height="48" class="m-0" /></span>
                         <h3 class="font-extrabold">Trending</h4>
                     </div>
-                    <div class="trending-body">
-                        <div class="trending-search-bar">
-                            <i class="fas fa-search"></i>
-                            <input placeholder="Search tag" id="trending-search" />
-                        </div>
-                        <div class="tags">
-                            <span>Prueba</span>
+                    <div>
+                        <div class="flex flex-col gap-2 text-center items-center">
+                            @foreach ($tags as $tag)
+                            <a href="" class="bg-[{{ $tag->color }}] rounded-full w-1/2">{{ $tag->name }}</span>
+                                @endforeach
                         </div>
                     </div>
                 </div>
@@ -290,6 +300,13 @@
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var baseUrl = window.location.origin; // Obtiene el origen de la URL actual
+            var adminUrl = baseUrl + "/admin"; // Construye la nueva URL deseada
+            document.getElementById("admin-link").href = adminUrl; // Asigna la URL al enlace
+        });
+    </script>
 </body>
 
 </html>

@@ -9,7 +9,7 @@
                     @foreach ($posts as $post)
                         <div class="feed">
                             <div class="feed-top">
-                                <div class="user">
+                                <a href="{{ route('user-profile', $post->user) }}" class="user">
                                     <div class="profile-picture">
                                         <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
                                     </div>
@@ -20,7 +20,7 @@
                                             <small>{{ $post->created_at->format('d/m/Y h:i:s') }}</small>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="feed-img">
                                 <img src="{{ Storage::url($post->image) }}" alt="" />
