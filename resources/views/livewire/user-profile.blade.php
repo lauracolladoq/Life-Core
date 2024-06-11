@@ -38,10 +38,9 @@
             @if (count($posts))
                 @foreach ($posts as $post)
                     <div class="profile-feed">
-                        <div class="feed-img">
-                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover"
-                                alt="" />
-                        </div>
+                        <a href="{{ route('post-detail', $post->id) }}" class="feed-img">
+                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
+                        </a>
                     </div>
                 @endforeach
             @else

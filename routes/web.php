@@ -3,6 +3,8 @@
 use App\Livewire\Explore;
 use App\Livewire\Home;
 use App\Livewire\MyProfile;
+use App\Livewire\Post;
+use App\Livewire\PostDetail;
 use App\Livewire\Tag;
 use App\Livewire\TrendingTag;
 use App\Livewire\UserProfile;
@@ -29,3 +31,5 @@ Route::get('/explore', Explore::class)->name('explore');
 Route::get('/trending-tag/{tag}', TrendingTag::class)->name('trending-tag');
 
 Route::get('/user-profile/{user}', UserProfile::class)->name('user-profile');
+
+Route::get('/post-detail/{post}', PostDetail::class)->name('post-detail');

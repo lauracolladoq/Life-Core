@@ -25,6 +25,7 @@ class AddComment extends Component
         $this->dispatch('eventAddComment')->to(Explore::class);
         $this->dispatch('eventAddComment')->to(Home::class);
         $this->dispatch('eventAddComment')->to(TrendingTag::class);
+        $this->dispatch('eventAddComment')->to(PostDetail::class);
 
         // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "Comment created!");

@@ -29,9 +29,9 @@
             @if(count($posts))
             @foreach($posts as $post)
             <div class="profile-feed">
-                <div class="feed-img">
+                <a href="{{ route('post-detail', $post->id) }}" class="feed-img">
                     <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
-                </div>
+                </a>
                 <div class="post-options">
                     <button wire:click="deleteConfirmation({{$post->id}})">
                         <i class="fas fa-trash text-red-500"></i>
