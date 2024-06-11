@@ -75,7 +75,7 @@
                                 <div class="tags pt-2 flex flex-wrap gap-2">
                                     @foreach ($post->tags as $tag)
                                         <span
-                                            class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
+                                            class="px-1 py-0.5 bg-[{{ $tag->color }}] text-black rounded-full mr-1">{{ $tag->name }}</span>
                                     @endforeach
                                 </div>
                             @endif
@@ -88,13 +88,11 @@
                                     @auth
                                         @if ($comment->user_id == auth()->user()->id)
                                             <div class="comment-user">
-                                                <a href="{{ route('user-profile', $comment->user->id) }}"
-                                                    class="profile-picture">
+                                                <div class="profile-picture">
                                                     <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
-                                                </a>
+                                                </div>
                                                 <div class="comment-body">
-                                                    <a href="{{ route('user-profile', $comment->user->id) }}"
-                                                        class="font-extrabold">{{ $comment->user->username }}</a>
+                                                    <p class="font-extrabold">{{ $comment->user->username }}</p>
                                                     <p>{{ $comment->content }}</p>
                                                 </div>
                                                 <button wire:click="delete({{ $comment->id }})">
@@ -118,7 +116,8 @@
                                         <!-- Si el usuario no está logeado, le aparecen los comentarios -->
                                     @else
                                         <div class="comment">
-                                            <a href="{{ route('user-profile', $comment->user->id) }}" class="profile-picture">
+                                            <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                class="profile-picture">
                                                 <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
                                             </a>
                                             <div class="comment-body">

@@ -79,7 +79,7 @@
                                 <div class="tags pt-2 flex flex-wrap gap-2">
                                     @foreach ($post->tags as $tag)
                                         <span
-                                            class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full mr-1">{{ $tag->name }}</span>
+                                            class="px-1 py-0.5 bg-[{{ $tag->color }}] text-black rounded-full mr-1">{{ $tag->name }}</span>
                                     @endforeach
                                 </div>
                             @endif
@@ -106,11 +106,13 @@
                                             <!-- Si el usuario está logeado y el comentario no es del usuario logeado, le aparecen los comentarios -->
                                         @else
                                             <div class="comment">
-                                                <div class="profile-picture">
+                                                <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                    class="profile-picture">
                                                     <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
-                                                </div>
+                                                </a>
                                                 <div class="comment-body">
-                                                    <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                                    <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                        class="font-extrabold">{{ $comment->user->username }}</a>
                                                     <p>{{ $comment->content }}</p>
                                                 </div>
                                             </div>

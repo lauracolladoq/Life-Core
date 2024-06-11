@@ -25,6 +25,13 @@ button:focus {
   box-shadow: none;
 }
 
+.btn-primary:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: none;
+  background-color: var(--color-primary);
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -469,6 +476,16 @@ span img {
 .icon-bg {
   filter: invert(1);
 }
+
+.input-style {
+  background: var(--color-light);
+  padding: 0.5rem;
+  border-radius: var(--card-border-radius);
+}	
+
+.input-style:focus {
+  border: 1px solid var(--color-primary);
+}	
 
 
 /* --------------- Inicio My Profile --------------- */
