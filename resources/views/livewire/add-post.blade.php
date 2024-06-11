@@ -40,16 +40,15 @@
                 <x-label for="tags" class="font-extrabold text-center">Tags</x-label>
                 <div class="flex flex-wrap gap-2 justify-center">
                     @foreach ($myTags as $tag)
-                        <div class="relative inline-block">
-                            <!-- peer es una clase de Tailwind que se usa para habilitar estilo condicional basado en el estado de un "peer" que es un elemento de formulario como un input -->
-                            <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
-                                wire:model="tags" class="hidden peer" />
-                            <x-label for="{{ $tag->name }}"
-                                class="px-1 py-0.5 bg-[{{ $tag->color }}] rounded-full cursor-pointer bg-opacity-20 hover:bg-opacity-100 hover:shadow-xl
-                                peer-checked:bg-opacity-100 peer-checked:shadow-xl">
-                                {{ $tag->name }}
-                            </x-label>
-                        </div>
+                    <div class="flex items-center m-1 justify-center align-middle text-center">
+                        <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
+                                 wire:model="tags" class="mr-1.5"/>
+                        <x-label for="{{ $tag->name }}"
+                                 class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
+                                        text-black">
+                            {{ $tag->name }}
+                        </x-label>
+                    </div>
                     @endforeach
                 </div>
                 <x-input-error for="tags" class="pt-2"/>

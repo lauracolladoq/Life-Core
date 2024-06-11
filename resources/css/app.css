@@ -487,6 +487,11 @@ span img {
   border: 1px solid var(--color-primary);
 }	
 
+.input-style[type="checkbox"] {
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border-radius: var(--card-border-radius);
+}
 
 /* --------------- Inicio My Profile --------------- */
 

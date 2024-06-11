@@ -120,11 +120,13 @@
                                         <!-- Si el usuario no está logeado, le aparecen los comentarios -->
                                     @else
                                         <div class="comment">
-                                            <div class="profile-picture">
+                                            <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                class="profile-picture">
                                                 <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
-                                            </div>
+                                            </a>
                                             <div class="comment-body">
-                                                <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                                <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                    class="font-extrabold">{{ $comment->user->username }}</a>
                                                 <p>{{ $comment->content }}</p>
                                             </div>
                                         </div>

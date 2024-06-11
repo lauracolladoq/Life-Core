@@ -11,8 +11,8 @@ use Livewire\Component;
 
 class MyProfile extends Component
 {
-    public UpdatePost $form;
     public bool $openModalUpdatePost = false;
+    public UpdatePost $form;
 
     #[On('eventAddPost')]
     #[On('eventDeletedPost')]
@@ -57,13 +57,23 @@ class MyProfile extends Component
         $this->dispatch("message", "Post deleted!");
     }
 
+    // Métodos para editar un post
     public function edit(Post $post)
     {
         $this->form->setPost($post);
         $this->openModalUpdatePost = true;
     }
 
-    public function update(){
+    public function update()
+    {
+        $this->form->editPost();
+        $this->cancelUpdate();
+        $this->dispatch("message", "Post updated!");
+    }
 
+    public function cancelUpdate()
+    {
+        $this->form->cancelEditPost();
+        $this->openModalUpdatePost = false;
     }
 }

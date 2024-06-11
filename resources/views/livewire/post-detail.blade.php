@@ -20,14 +20,16 @@
                     <img src="{{ Storage::url($post->image) }}" alt="" />
                 </div>
                 <div class="action-button">
-                    <button wire:click="like({{ $post->id }})">
-                        <i @class([
-                            'fa-regular fa-heart',
-                            'fa-solid fa-heart liked' => in_array(
-                                $post->id,
-                                $myLikes->pluck('id')->toArray()),
-                        ])></i>
-                    </button>
+                    @auth
+                        <button wire:click="like({{ $post->id }})">
+                            <i @class([
+                                'fa-regular fa-heart',
+                                'fa-solid fa-heart liked' => in_array(
+                                    $post->id,
+                                    $myLikes->pluck('id')->toArray()),
+                            ])></i>
+                        </button>
+                    @endauth
                     <button id="toggleComments-{{ $post->id }}">
                         <i class="fa-regular fa-comment-dots"></i>
                     </button>
@@ -74,22 +76,35 @@
                     <!-- Si tiene comentarios, se muestran -->
                     @if (count($post->comments))
                         @foreach ($post->comments as $comment)
-                            <!-- Si el comentario es del usuario logeado, se añade el botón de delete -->
-                            @if ($comment->user_id == auth()->user()->id)
-                                <div class="comment-user">
-                                    <div class="profile-picture">
-                                        <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                            <!-- Si el usuario está logeado y el comentario es del usuario logeado, le aparece la opción de borrar -->
+                            @auth
+                                @if ($comment->user_id == auth()->user()->id)
+                                    <div class="comment-user">
+                                        <div class="profile-picture">
+                                            <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                        </div>
+                                        <div class="comment-body">
+                                            <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                            <p>{{ $comment->content }}</p>
+                                        </div>
+                                        <button wire:click="delete({{ $comment->id }})">
+                                            <i class="fas fa-trash text-red-500"></i>
+                                        </button>
                                     </div>
-                                    <div class="comment-body">
-                                        <p class="font-extrabold">{{ $comment->user->username }}</p>
-                                        <p>
-                                            {{ $comment->content }}
-                                        </p>
+                                    <!-- Si el usuario está logeado y el comentario no es del usuario logeado, le aparecen los comentarios -->
+                                @else
+                                    <div class="comment">
+                                        <a href="{{ route('user-profile', $comment->user->id) }}" class="profile-picture">
+                                            <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                        </a>
+                                        <div class="comment-body">
+                                            <a href="{{ route('user-profile', $comment->user->id) }}"
+                                                class="font-extrabold">{{ $comment->user->username }}</a>
+                                            <p>{{ $comment->content }}</p>
+                                        </div>
                                     </div>
-                                    <button wire:click="delete({{ $comment->id }})">
-                                        <i class="fas fa-trash text-red-500"></i>
-                                    </button>
-                                </div>
+                                @endif
+                                <!-- Si el usuario no está logeado, le aparecen los comentarios -->
                             @else
                                 <div class="comment">
                                     <a href="{{ route('user-profile', $comment->user->id) }}" class="profile-picture">
@@ -101,16 +116,18 @@
                                         <p>{{ $comment->content }}</p>
                                     </div>
                                 </div>
-                            @endif
+                            @endauth
                         @endforeach
                         <!-- Si no tiene comentarios, aparece un mensaje -->
                     @else
                         <p>No comments yet</p>
                     @endif
                 </div>
-                <div class="pt-2">
-                    @livewire('add-comment', ['postId' => $post->id])
-                </div>
+                @auth
+                    <div class="pt-2">
+                        @livewire('add-comment', ['postId' => $post->id])
+                    </div>
+                @endauth
             </div>
         </div>
         <!-- ------------------------------------------- Fin Feed  ------------------------------------------- -->
