@@ -105,8 +105,8 @@
                         @if ($post->tags->count())
                             <div class="tags pt-2 flex flex-wrap gap-2">
                                 @foreach ($post->tags as $tag)
-                                    <span
-                                        class="px-1 py-0.5 bg-[{{ $tag->color }}] text-black rounded-full mr-1">{{ $tag->name }}</span>
+                                    <a href="{{ route('trending-tag', $tag->id) }}"
+                                        class="px-1 py-0.5 bg-[{{ $tag->color }}] text-black rounded-full mr-1">{{ $tag->name }}</a>
                                 @endforeach
                             </div>
                         @endif
