@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\UpdatePost;
+use App\Livewire\Forms\UpdateProfile;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
@@ -14,8 +15,12 @@ class MyProfile extends Component
     public bool $openModalUpdatePost = false;
     public UpdatePost $form;
 
+    public bool $openModalUpdateProfile = false;
+    public UpdateProfile $formProfile;
+
     #[On('eventAddPost')]
     #[On('eventDeletedPost')]
+    #[On('eventUpdatedProfile')]
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'image', 'content', 'created_at')
@@ -38,6 +43,7 @@ class MyProfile extends Component
         $post->usersLikes()->toggle(auth()->user()->id);
     }
 
+    // Métodos para eliminar un post
     public function deleteConfirmation(Post $post)
     {
         $this->dispatch('deleteConfirmation', $post->id);
@@ -75,5 +81,26 @@ class MyProfile extends Component
     {
         $this->form->cancelEditPost();
         $this->openModalUpdatePost = false;
+    }
+
+    // Métodos para editar el perfil
+    public function editProfile()
+    {
+        $this->formProfile->setUser(auth()->user());
+        $this->openModalUpdateProfile = true;
+    }
+
+    public function updateProfile()
+    {
+        $this->formProfile->editProfile();
+        $this->cancelUpdateProfile();
+        $this->dispatch('eventUpdatedProfile')->to(MyProfile::class);
+        $this->dispatch("message", "Profile updated!");
+    }
+
+    public function cancelUpdateProfile()
+    {
+        $this->formProfile->cancelEditProfile();
+        $this->openModalUpdateProfile = false;
     }
 }

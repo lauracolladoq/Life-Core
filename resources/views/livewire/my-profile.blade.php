@@ -21,7 +21,9 @@
                 </div>
             </div>
             <div>
-                @livewire('edit-profile')
+               <button class="btn btn-primary" wire:click="editProfile({{ auth()->user()->id }})">
+                    Edit
+               </button>
             </div>
         </div>
 
@@ -92,17 +94,17 @@
                         <x-label for="tags_id" class="font-extrabold text-center">Tags</x-label>
                         <div class="flex flex-wrap gap-2 justify-center">
                             @foreach ($tags as $tag)
-                            <div class="flex items-center m-1 justify-center align-middle text-center">
-                                <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
-                                         wire:model="form.tags_id" class="mr-1.5"/>
-                                <x-label for="{{ $tag->name }}"
-                                         class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
+                                <div class="flex items-center m-1 justify-center align-middle text-center">
+                                    <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
+                                        wire:model="form.tags_id" class="mr-1.5" />
+                                    <x-label for="{{ $tag->name }}"
+                                        class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
                                                 text-black">
-                                    {{ $tag->name }}
-                                </x-label>
-                            </div>
-                        @endforeach
-                        
+                                        {{ $tag->name }}
+                                    </x-label>
+                                </div>
+                            @endforeach
+
                         </div>
                         <x-input-error for="form.tags_id" class="pt-2" />
                     </div>
@@ -114,6 +116,51 @@
                 </x-slot>
             </x-dialog-modal>
         </div>
+    @endisset
 
+    <!-- Update Profile Modal -->
+    @isset($formProfile->user)
+        <div>
+            <x-dialog-modal wire:model="openModalUpdateProfile" class="justify-center">
+                <x-slot name="title">
+                    <div class="flex justify-between items-center">
+                        <h2 class="font-extrabold flex-grow text-center">Update Profile</h2>
+                        <button wire:click="cancelUpdateProfile" class="flex-shrink-0 ml-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                                color="#666666" fill="none">
+                                <path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </x-slot>
+                <x-slot name="content">
+                    <div class="flex flex-col items-center justify-center text-center gap-2">
+                        <div>
+                            <div id="my-profile-picture" class="my-profile-picture">
+                                <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="" />
+                            </div>
+                            <x-input type="file" id="avatar" wire:model="avatar" />
+                            <x-input-error for="avatar" />
+                        </div>
+                        <div>
+                            <x-label for="name">Name:</x-label>
+                            <x-input id="name" name="name" wire:model="name"></x-input>
+                            <x-input-error for="name" />
+                        </div>
+                        <div>
+                            <x-label for="username">Username:</x-label>
+                            <x-input id="username" name="username" wire:model="username"></x-input>
+                            <x-input-error for="username" />
+                        </div>
+                    </div>
+                </x-slot>
+                <x-slot name="footer">
+                    <x-button wire:click="updateProfile" wire:loading.attr="disabled" class="btn btn-primary">
+                        Save
+                    </x-button>
+                </x-slot>
+            </x-dialog-modal>
+        </div>
     @endisset
 </div>
