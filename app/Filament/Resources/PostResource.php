@@ -122,7 +122,6 @@ class PostResource extends Resource
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'comments' => Pages\ManagePostComments::route('/{record}/comments'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
             'view' => Pages\ViewPost::route('/{record}')
         ];
@@ -179,7 +178,6 @@ class PostResource extends Resource
         return $page->generateNavigationItems([
             Pages\ViewPost::class,
             Pages\EditPost::class,
-            Pages\ManagePostComments::class,
         ]);
     }
 }

@@ -39,10 +39,8 @@ class CommentResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('post.image'),
                 Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('post.id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
