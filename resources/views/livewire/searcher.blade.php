@@ -1,7 +1,9 @@
 <!-- Si el cursor está sobre el input se muestra el div con los resultados, sino desaparece -->
 <div wire:mouseenter="$set('showResults', true)" wire:mouseleave="$set('showResults', false)">
-    <i class="fa fa-search"></i>
-    <input type="search" placeholder="Search User" wire:model.live="string" />
+    <div class="flex flex-nowrap items-center">
+        <i class="fa fa-search"></i>
+        <input type="search" placeholder="Search User" wire:model.live="string" />
+    </div>
     <div @class(['search-results', 'hidden' => $showResults == false])>
         <!-- Si hay usuarios que coincidan con la búsqueda se muestran -->
         @if (count($users))

@@ -20,23 +20,46 @@
             </div>
 
             <form
-                action="{{ filament()->getLogoutUrl() }}"
-                method="post"
-                class="my-auto"
+            id="logout-form"
+            action="{{ route('logout') }}"
+            method="post"
+            class="my-auto"
+        >
+            @csrf
+        
+            <x-filament::button
+                color="gray"
+                icon="heroicon-m-arrow-left-on-rectangle"
+                icon-alias="panels::widgets.account.logout-button"
+                labeled-from="sm"
+                tag="button"
+                type="button"
+                onclick="logoutAndRedirect()"
             >
-                @csrf
-
-                <x-filament::button
-                    color="gray"
-                    icon="heroicon-m-arrow-left-on-rectangle"
-                    icon-alias="panels::widgets.account.logout-button"
-                    labeled-from="sm"
-                    tag="button"
-                    type="submit"
-                >
-                    {{ __('filament-panels::widgets/account-widget.actions.logout.label') }}
-                </x-filament::button>
-            </form>
+            </x-filament::button>
+        </form>        
         </div>
     </x-filament::section>
 </x-filament-widgets::widget>
+<script>
+    function logoutAndRedirect() {
+        const form = document.getElementById('logout-form');
+        const logoutForm = document.createElement('form');
+        logoutForm.method = 'POST';
+        logoutForm.action = form.action;
+        
+        const csrfToken = document.querySelector('input[name="_token"]').value;
+        
+        const csrfInput = document.createElement('input');
+        csrfInput.type = 'hidden';
+        csrfInput.name = '_token';
+        csrfInput.value = csrfToken;
+        
+        logoutForm.appendChild(csrfInput);
+        document.body.appendChild(logoutForm);
+        
+        logoutForm.submit();
+        
+        window.location.href = '{{ route('home') }}';
+    }
+</script>

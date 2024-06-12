@@ -45,7 +45,7 @@
                                  wire:model="tags" class="mr-1.5"/>
                         <x-label for="{{ $tag->name }}"
                                  class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
-                                        text-black">
+                                        text-black ">
                             {{ $tag->name }}
                         </x-label>
                     </div>

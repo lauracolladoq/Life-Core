@@ -222,7 +222,7 @@
                                 <!-- Background Colors -->
                                 <div class="background">
                                     <h4 class="font-bold">Background </h4>
-                                    <div class="choose-bg w-50">
+                                    <div class="choose-bg">
                                         <div class="bg1 active">
                                             <span></span>
                                             <h5>Light</h5>

@@ -1,5 +1,3 @@
-<div>
-
     <div class="main-middle">
         <!-- ------------------------------------------- Inicio Feed ------------------------------------------- -->
         <!-- Si hay posts con el tag seleccionado, se muestran -->
@@ -187,4 +185,3 @@
             </div>
         @endif
     </div>
-</div>
