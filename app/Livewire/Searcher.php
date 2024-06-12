@@ -22,6 +22,13 @@ class Searcher extends Component
                 ->get();
         }
 
+        // Si está logueado, no mostramos el usuario logueado en los resultados
+        if (auth()->check()) {
+            $users = collect($users)->filter(function ($user) {
+                return $user->id !== auth()->id();
+            })->all();
+        }
+
         return view('livewire.searcher', compact('users'));
     }
 }

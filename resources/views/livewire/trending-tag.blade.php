@@ -11,18 +11,51 @@
                 @foreach ($posts as $post)
                     <div class="feed">
                         <div class="feed-top">
-                            <a href="{{ route('user-profile', $post->user->id) }}" class="user">
-                                <div class="profile-picture">
-                                    <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
-                                </div>
-                                <div class="info">
-                                    <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}
-                                    </h4>
-                                    <div class="time text-gray">
-                                        <small>{{ $post->created_at->format('d/m/Y h:i:s') }}</small>
+                            <!-- Si el post es del usuario logeado, no puedes visitar el perfil -->
+                            @auth
+                                @if ($post->user->id == auth()->user()->id)
+                                    <div class="user">
+                                        <div class="profile-picture">
+                                            <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                        </div>
+                                        <div class="info">
+                                            <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}
+                                            </h4>
+                                            <div class="time text-gray">
+                                                <small>{{ $post->created_at->format('d/m/Y h:i:s') }}</small>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                @else
+                                    <!-- Si el post no es del usuario logeado, puedes visitar el perfil -->
+                                    <a href="{{ route('user-profile', $post->user->id) }}" class="user">
+                                        <div class="profile-picture">
+                                            <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                        </div>
+                                        <div class="info">
+                                            <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}
+                                            </h4>
+                                            <div class="time text-gray">
+                                                <small>{{ $post->created_at->format('d/m/Y h:i:s') }}</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                            @else
+                                <!-- Si el post no es del usuario logeado, puedes visitar el perfil -->
+                                <a href="{{ route('user-profile', $post->user->id) }}" class="user">
+                                    <div class="profile-picture">
+                                        <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                    </div>
+                                    <div class="info">
+                                        <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}
+                                        </h4>
+                                        <div class="time text-gray">
+                                            <small>{{ $post->created_at->format('d/m/Y h:i:s') }}</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endauth
                         </div>
                         <div class="feed-img">
                             <img src="{{ Storage::url($post->image) }}" alt="" />
