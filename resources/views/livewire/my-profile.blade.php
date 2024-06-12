@@ -76,7 +76,7 @@
                             <x-label for="image" class="font-extrabold text-center">Image</x-label>
                             <div class="relative div-image">
                                 @if ($post->image)
-                                    <img src="{{ Storage::url($post->image) }}"
+                                    <img src="{{ Storage::url($form->post->image) }}"
                                         class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
                                 @endif
                             </div>

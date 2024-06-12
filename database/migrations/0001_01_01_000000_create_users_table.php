@@ -25,6 +25,11 @@ return new class extends Migration
             // Middleware isAdmin
             $table->boolean('isAdmin')->default(false);
             $table->timestamps();
+            // Para socialite
+            $table->string('provider_name')->nullable();
+            $table->string('provider_id')->nullable();
+            $table->string('provider_token')->nullable();
+            $table->string('provider_refresh_token')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
