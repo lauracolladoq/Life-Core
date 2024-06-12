@@ -37,7 +37,7 @@ class UpdateProfile extends Form
 
         $route = $this->user->avatar;
 
-        if ($this->avatar) {
+        if ($route) {
             if (basename($route) != 'default.png') {
                 Storage::delete($route);
             }

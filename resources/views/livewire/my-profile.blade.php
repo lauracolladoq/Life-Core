@@ -21,9 +21,9 @@
                 </div>
             </div>
             <div>
-               <button class="btn btn-primary" wire:click="editProfile({{ auth()->user()->id }})">
+                <button class="btn btn-primary" wire:click="editProfile({{ auth()->user()->id }})">
                     Edit
-               </button>
+                </button>
             </div>
         </div>
 
@@ -120,47 +120,57 @@
 
     <!-- Update Profile Modal -->
     @isset($formProfile->user)
-        <div>
-            <x-dialog-modal wire:model="openModalUpdateProfile" class="justify-center">
-                <x-slot name="title">
-                    <div class="flex justify-between items-center">
-                        <h2 class="font-extrabold flex-grow text-center">Update Profile</h2>
-                        <button wire:click="cancelUpdateProfile" class="flex-shrink-0 ml-auto">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                color="#666666" fill="none">
-                                <path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor"
-                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
+        <x-dialog-modal wire:model="openModalUpdateProfile" class="justify-center">
+            <x-slot name="title">
+                <div class="flex justify-between items-center">
+                    <h2 class="font-extrabold flex-grow text-center">Update Profile</h2>
+                    <button wire:click="cancelUpdateProfile" class="flex-shrink-0 ml-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                            color="#666666" fill="none">
+                            <path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </x-slot>
+            <x-slot name="content">
+                <div class="row">
+                    <div class="column flex flex-col w-1/2">
+                        <x-label for="avatarUpdate" class="font-extrabold text-center">Avatar</x-label>
+                        <div class="relative div-image">
+                            <input type="file" wire:model="form.avatar" accept="avatar/*" hidden id="avatarUpdate" />
+                            <label for="avatarUpdate" class="absolute btn btn-primary bottom-2 ">
+                                <i class="fa-solid fa-upload mr-2"></i>Upload
+                            </label>
+                            @if ($formProfile->avatar)
+                                <img src="{{ $formProfile->avatar->temporaryUrl() }}"
+                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
+                            @else
+                                <img src="{{ Storage::url($formProfile->user->avatar) }}"
+                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
+                            @endif
+                        </div>
+                        <x-input-error for="form.avatar" class="my-2" />
                     </div>
-                </x-slot>
-                <x-slot name="content">
-                    <div class="flex flex-col items-center justify-center text-center gap-2">
+                    <div class="col flex flex-col items-center justify-center text-center gap-2">
                         <div>
-                            <div id="my-profile-picture" class="my-profile-picture">
-                                <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="" />
-                            </div>
-                            <x-input type="file" id="avatar" wire:model="avatar" />
-                            <x-input-error for="avatar" />
+                            <x-label for="name" class="font-extrabold text-center">Name:</x-label>
+                            <x-input id="name" name="name" wire:model="form.name"></x-input>
+                            <x-input-error for="form.name" />
                         </div>
                         <div>
-                            <x-label for="name">Name:</x-label>
-                            <x-input id="name" name="name" wire:model="name"></x-input>
-                            <x-input-error for="name" />
-                        </div>
-                        <div>
-                            <x-label for="username">Username:</x-label>
-                            <x-input id="username" name="username" wire:model="username"></x-input>
-                            <x-input-error for="username" />
+                            <x-label for="username" class="font-extrabold text-center">Username:</x-label>
+                            <x-input id="username" name="username" wire:model="form.username"></x-input>
+                            <x-input-error for="form.username" />
                         </div>
                     </div>
-                </x-slot>
-                <x-slot name="footer">
-                    <x-button wire:click="updateProfile" wire:loading.attr="disabled" class="btn btn-primary">
-                        Save
-                    </x-button>
-                </x-slot>
-            </x-dialog-modal>
-        </div>
+                </div>
+            </x-slot>
+            <x-slot name="footer">
+                <x-button wire:click="updateProfile" wire:loading.attr="disabled" class="btn btn-primary">
+                    Save
+                </x-button>
+            </x-slot>
+        </x-dialog-modal>
     @endisset
 </div>

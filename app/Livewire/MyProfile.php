@@ -6,12 +6,16 @@ use App\Livewire\Forms\UpdatePost;
 use App\Livewire\Forms\UpdateProfile;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class MyProfile extends Component
 {
+    use WithFileUploads;
+    
     public bool $openModalUpdatePost = false;
     public UpdatePost $form;
 
@@ -84,9 +88,9 @@ class MyProfile extends Component
     }
 
     // Métodos para editar el perfil
-    public function editProfile()
+    public function editProfile(User $user)
     {
-        $this->formProfile->setUser(auth()->user());
+        $this->formProfile->setUser($user);
         $this->openModalUpdateProfile = true;
     }
 
