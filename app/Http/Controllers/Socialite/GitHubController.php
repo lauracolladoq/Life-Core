@@ -18,17 +18,28 @@ class GitHubController extends Controller
     public function callback()
     {
         $githubUser = Socialite::driver('github')->user();
-        $user = User::updateOrCreate([
-            'provider_id' => $githubUser->id,
-        ], [
-            'name' => $githubUser->name,
-            'email' => $githubUser->email,
-            'provider_name' => 'github',
-            'provider_token' => $githubUser->token,
-            'provider_refresh_token' => $githubUser->refreshToken,
-        ]);
+
+        // Busca al usuario por su email, si no lo encuentra lo crea
+        $user = User::where('email', $githubUser->email)->first();
+
+        if (!$user) {
+            $user = User::create([
+                'username' => $githubUser->nickname ?? $githubUser->email,
+                'name' => $githubUser->name,
+                'email' => $githubUser->email,
+                'provider_name' => 'github',
+                'provider_token' => $githubUser->token,
+                'provider_refresh_token' => $githubUser->refreshToken,
+            ]);
+        } else {
+            //Si el usuario ya existe, actualiza su provider_id
+            $user->update([
+                'provider_id' => $githubUser->id,
+
+            ]);
+        }
 
         Auth::login($user);
-        return redirect()->route('/');
+        return redirect()->route('explore');
     }
 }
