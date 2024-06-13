@@ -35,7 +35,7 @@ return [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => 'http://ec2-3-93-142-25.compute-1.amazonaws.com/auth/google/callback',
-    ], 
+    ],
 
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),
