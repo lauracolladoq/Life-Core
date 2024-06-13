@@ -20,10 +20,17 @@
                         <p class="text-gry">{{ auth()->user()->following()->count() }}</p>
                 </div>
             </div>
-            <div>
+            <div class="flex gap-3">
                 <button class="btn btn-primary" wire:click="editProfile({{ auth()->user()->id }})">
                     Edit
                 </button>
+                <form method="POST" action="{{ route('logout') }}" x-data class="block lg:hidden">
+                    @csrf
+                    <a class="btn btn-primary" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
+                
             </div>
         </div>
 
@@ -73,8 +80,8 @@
                     </div>
                 </x-slot>
                 <x-slot name="content">
-                    <div class="row flex justify-between text-center flex-nowrap gap-5 p-2 add-post">
-                        <div class="column flex flex-col w-1/2">
+                    <div class="flex flex-col md:flex-row justify-between text-center flex-nowrap gap-5 p-2 add-post">
+                        <div class="flex flex-col w-full md:w-1/2">
                             <x-label for="image" class="font-extrabold text-center">Image</x-label>
                             <div class="relative div-image">
                                 @if ($post->image)
@@ -83,14 +90,14 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="column flex flex-col w-1/2">
+                        <div class="flex flex-col w-full md:w-1/2">
                             <x-label for="content" class="font-extrabold text-center">Content</x-label>
                             <textarea id="content" name="content" wire:model="form.content" class="add-post w-full"></textarea>
                             <x-input-error for="form.content" class="pt-2" />
                         </div>
                     </div>
-
-                    <div class="row flex flex-column pt-2">
+                
+                    <div class="flex flex-col pt-2">
                         <x-label for="tags_id" class="font-extrabold text-center">Tags</x-label>
                         <div class="flex flex-wrap gap-2 justify-center">
                             @foreach ($tags as $tag)
@@ -98,17 +105,16 @@
                                     <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
                                         wire:model="form.tags_id" class="mr-1.5" />
                                     <x-label for="{{ $tag->name }}"
-                                        class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
-                                                text-black">
+                                        class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full text-black">
                                         {{ $tag->name }}
                                     </x-label>
                                 </div>
                             @endforeach
-
                         </div>
                         <x-input-error for="form.tags_id" class="pt-2" />
                     </div>
                 </x-slot>
+                
                 <x-slot name="footer">
                     <x-button wire:click="update" wire:loading.attr="disabled" class="btn btn-primary">
                         Save

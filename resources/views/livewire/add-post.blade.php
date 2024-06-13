@@ -14,13 +14,12 @@
             </div>
         </x-slot>
         <x-slot name="content">
-            <div class="row flex justify-between text-center flex-nowrap gap-5 p-2">
-                <div class="column flex flex-col w-1/2">
+            <div class="flex flex-col md:flex-row justify-between text-center flex-nowrap gap-5 p-2">
+                <div class="flex flex-col w-full md:w-1/2">
                     <x-label for="image" class="font-extrabold text-center">Image</x-label>
                     <div class="relative div-image">
                         <input type="file" wire:model="image" accept="image/*" hidden id="image" />
-                        <label for="image"
-                            class="absolute btn btn-primary bottom-2">
+                        <label for="image" class="absolute btn btn-primary bottom-2">
                             <i class="fa-solid fa-upload mr-2"></i>Upload
                         </label>
                         @if ($image)
@@ -30,13 +29,13 @@
                     </div>
                     <x-input-error for="image" class="my-2" />
                 </div>
-                <div class="column flex flex-col w-1/2">
+                <div class="flex flex-col w-full md:w-1/2">
                     <x-label for="content" class="font-extrabold text-center">Content</x-label>
                     <textarea id="content" name="content" wire:model="content" class="add-post w-full"></textarea>
                     <x-input-error for="content" class="pt-2"/>
                 </div>
             </div>
-            <div class="row flex flex-column pt-2">
+            <div class="flex flex-col pt-2">
                 <x-label for="tags" class="font-extrabold text-center">Tags</x-label>
                 <div class="flex flex-wrap gap-2 justify-center">
                     @foreach ($myTags as $tag)
@@ -44,8 +43,7 @@
                         <x-input id="{{ $tag->name }}" type="checkbox" value="{{ $tag->id }}"
                                  wire:model="tags" class="mr-1.5"/>
                         <x-label for="{{ $tag->name }}"
-                                 class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full
-                                        text-black ">
+                                 class="p-1 m-0 bg-[{{ $tag->color }}] rounded-full text-black">
                             {{ $tag->name }}
                         </x-label>
                     </div>
@@ -54,6 +52,7 @@
                 <x-input-error for="tags" class="pt-2"/>
             </div>
         </x-slot>
+        
         <x-slot name="footer">
             <x-button wire:click="store" wire:loading.attr="disabled" class="btn btn-primary">
                 Save

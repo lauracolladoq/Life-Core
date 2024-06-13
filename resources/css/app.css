@@ -480,11 +480,11 @@ span img {
   background: var(--color-light);
   padding: 0.5rem;
   border-radius: var(--card-border-radius);
-}	
+}
 
 .input-style:focus {
   border: 1px solid var(--color-primary);
-}	
+}
 
 .input-style[type="checkbox"] {
   color: var(--color-primary);
@@ -556,13 +556,13 @@ span img {
 .profile-feeds .profile-feed {
   background: var(--color-white);
   padding: 0.5rem;
+  height: 13rem;
   border-radius: var(--card-border-radius);
   position: relative;
 }
 
 .profile-feed .feed-img {
   border-radius: var(--card-border-radius);
-  height: 12rem;
   overflow: hidden;
 }
 
@@ -801,9 +801,10 @@ span img {
 /* Max width (767px) - Pantalla de móvil */
 @media (max-width: 767px) {
 
-  :root {  
+  :root {
     --btn-padding: 0.3rem 0.6rem;
   }
+
   .container {
     width: 90%;
   }
@@ -825,15 +826,15 @@ span img {
   }
 
   nav .search-bar {
-    padding:  0.3rem 0.6rem;
+    padding: 0.3rem 0.6rem;
     gap: 0.5rem;
   }
-  
+
   nav .search-bar input {
     font-size: 0.8rem;
     width: 50vw;
   }
-  
+
   aside {
     position: fixed;
     bottom: 10px;
@@ -882,7 +883,7 @@ span img {
     grid-template-columns: repeat(2, minmax(auto, auto));
   }
 
-  .profile-info{
+  .profile-info {
     flex-direction: column;
     height: auto;
   }
@@ -896,10 +897,11 @@ span img {
     gap: 0.5rem;
     justify-content: center;
   }
+
 }
 
 /* Max width (1023px) - Pantalla de tablet */
-@media (min-width: 768px) and (max-width: 1023px){
+@media (min-width: 768px) and (max-width: 1023px) {
   .main-container {
     grid-template-columns: auto auto;
   }
