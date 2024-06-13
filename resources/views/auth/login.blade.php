@@ -112,7 +112,7 @@
             </div>
             <div class="md:h-full max-md:mt-10 rounded-xl p-2 content-center">
                 <img src="{{ Storage::url('assets/poster.png') }}" alt="poster"
-                    class="object-contain rounded-sm hidden md:block" alt="login-image" />
+                    class="object-contain rounded-sm hidden md:block" />
                 <div class="flex justify-between p-2">
                     <a href="{{ url('/terms') }}" class="text-sm text-gray-400 text-center hover:underline">Term & Conditions</a>
                     <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"

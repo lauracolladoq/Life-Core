@@ -94,4 +94,5 @@ Make sure you have the following installed:
     composer global require laravel/installer
     ```
 
-### Instalattiom
+<br>
+### Installation
