@@ -24,7 +24,8 @@
                         </label>
                         @if ($image)
                             <img src="{{ $image->temporaryUrl() }}"
-                                class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
+                                class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center"
+                                alt="Preview of the uploaded image" />
                         @endif
                     </div>
                     <x-input-error for="image" class="my-2" />

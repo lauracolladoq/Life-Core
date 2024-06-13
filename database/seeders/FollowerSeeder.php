@@ -18,6 +18,7 @@ class FollowerSeeder extends Seeder
         $users = User::all();
 
         foreach ($users as $user) {
+            // Seguidores aleatorios que no sean el usuario
             $followers = User::where('id', '!=', $user->id)
                 ->inRandomOrder()
                 ->limit(rand(1, User::count() - 1))

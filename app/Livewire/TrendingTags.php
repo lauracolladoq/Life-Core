@@ -9,7 +9,7 @@ class TrendingTags extends Component
 {
     public function render()
     {
-        // Tags ordenados por la cantidad de posts que tienen
+        // Tags ordenados por la cantidad de posts a los que pertenecen
         $tags = Tag::withCount('posts')
             ->orderBy('posts_count', 'desc')
             ->get();

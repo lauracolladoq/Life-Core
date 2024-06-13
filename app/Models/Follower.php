@@ -11,11 +11,13 @@ class Follower extends Model
 
     protected $fillable = ['user_id', 'follower_id'];
 
+    // Relación 1:N inversa
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    // Relación 1:N inversa
     public function follower()
     {
         return $this->belongsTo(User::class);

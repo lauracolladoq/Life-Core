@@ -45,3 +45,7 @@ Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name
 
 Route::get('/auth/github/redirect', [GitHubController::class, 'redirect'])->name('github.redirect');
 Route::get('/auth/github/callback', [GitHubController::class, 'callback'])->name('github.callback');
+
+Route::get('/terms', function () {
+    return view('terms'); 
+});

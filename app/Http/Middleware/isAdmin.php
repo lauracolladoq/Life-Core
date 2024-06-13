@@ -15,6 +15,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Si el usuario no es administrador, se le niega el acceso
         if (auth()->user()->isAdmin == false) {
             abort(403);
         }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Life Core') }}</title>
 
     <!-- Google Fonts -->
     <style>
@@ -36,7 +36,6 @@
 
     <!-- Styles -->
     @livewireStyles
-
 </head>
 
 <body>
@@ -85,42 +84,37 @@
                 <aside>
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')"
                         class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                        <span><img src="https://cdn.hugeicons.com/icons/home-01-stroke-rounded.svg" alt="home-01"
-                                width="48" height="48" /></span>
+                        <span><img src="https://cdn.hugeicons.com/icons/home-01-stroke-rounded.svg" alt="Home icon" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Home</h3>
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('myProfile') }}" :active="request()->routeIs('')"
+                    <x-nav-link href="{{ route('myProfile') }}" :active="request()->routeIs('myProfile')"
                         class="menu-item {{ request()->routeIs('myProfile') ? 'active' : '' }}">
-                        <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="user"
-                                width="48" height="48" /></span>
+                        <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="User icon" width="48" height="48" /></span>
                         <h3 class="font-extrabold">My Profile</h3>
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('explore') }}" :active="request()->routeIs('explore')"
                         class="menu-item {{ request()->routeIs('explore') ? 'active' : '' }}">
-                        <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="view"
-                                width="48" height="48" /></span>
+                        <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="Explore icon" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Explore</h3>
                     </x-nav-link>
 
                     <x-nav-link href="{{ route('chatify') }}" :active="request()->routeIs('chatify')"
                         class="menu-item {{ request()->routeIs('chatify') ? 'active' : '' }}">
-                        <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="message-02"
-                                width="48" height="48" /></span>
+                        <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="Messages icon" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Messages</h3>
                     </x-nav-link>
 
                     <x-nav-link href="#theme" class="menu-item" data-toggle="modal">
-                        <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
-                                alt="paint-board" width="48" height="48" /></span>
+                        <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg" alt="Theme icon" width="48" height="48" /></span>
                         <h3 class="font-extrabold">Theme</h3>
                     </x-nav-link>
+                    <!-- Si está autenticado y es administrador aparece el enlace al panel de administración -->
                     @auth
                     @if (auth()->user()->isAdmin)
                         <x-nav-link id="admin-link" class="menu-item">
-                            <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg"
-                                    alt="paint-board" width="48" height="48" /></span>
+                            <span><img src="https://cdn.hugeicons.com/icons/settings-02-stroke-rounded.svg" alt="Admin panel icon" width="48" height="48" /></span>
                             <h3 class="font-extrabold">Admin Panel</h3>
                         </x-nav-link>
                     @endif
@@ -156,8 +150,7 @@
                         <div class="modal-body">
                             <h1 class="font-extrabold text-3xl">{{ auth()->user()->name }}</h1>
                             <p class="font-bold text-md"><span>@</span>{{ auth()->user()->username }}</p>
-                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt=""
-                                class="profile-picture" />
+                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="My Profile Picture" class="profile-picture" />
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
@@ -186,63 +179,64 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div class="theme-customize-popup-box">
-                            <h1 class="font-extrabold text-3xl">Customize Your Theme</h2>
-                                <p class="font-bold">Manage your font size, color and background</p>
-                                <!-- Font size -->
-                                <div class="font-size">
-                                    <h4 class="font-bold">Font Size</h4>
+                            <h1 class="font-extrabold text-3xl">Customize Your Theme</h1>
+                            <p class="font-bold">Manage your font size, color and background</p>
+                            <!-- Font size -->
+                            <div class="font-size">
+                                <h4 class="font-bold">Font Size</h4>
+                                <div>
                                     <div>
-                                        <div>
-                                            <h6>Aa</h6>
-                                        </div>
-                                        <div class="choose-size">
-                                            <span class="font-size-1"></span>
-                                            <span class="font-size-2"></span>
-                                            <span class="font-size-3 active"></span>
-                                            <span class="font-size-4"></span>
-                                        </div>
-                                        <div>
-                                            <h3>Aa</h3>
-                                        </div>
+                                        <h6>Aa</h6>
+                                    </div>
+                                    <div class="choose-size">
+                                        <span class="font-size-1"></span>
+                                        <span class="font-size-2"></span>
+                                        <span class="font-size-3 active"></span>
+                                        <span class="font-size-4"></span>
+                                    </div>
+                                    <div>
+                                        <h3>Aa</h3>
                                     </div>
                                 </div>
-                                <!-- Primary Colors-->
-                                <div class="colors">
-                                    <h4 class="font-bold">Color</h4>
-                                    <div class="choose-color">
-                                        <span class="color-1"></span>
-                                        <span class="color-2 "></span>
-                                        <span class="color-3 "></span>
-                                        <span class="color-4 "></span>
-                                        <span class="color-5 active"></span>
-                                        <span class="color-6 "></span>
-                                        <span class="color-7 "></span>
+                            </div>
+                            <!-- Primary Colors-->
+                            <div class="colors">
+                                <h4 class="font-bold">Color</h4>
+                                <div class="choose-color">
+                                    <span class="color-1"></span>
+                                    <span class="color-2"></span>
+                                    <span class="color-3"></span>
+                                    <span class="color-4"></span>
+                                    <span class="color-5 active"></span>
+                                    <span class="color-6"></span>
+                                    <span class="color-7"></span>
+                                </div>
+                            </div>
+                            <!-- Background Colors -->
+                            <div class="background">
+                                <h4 class="font-bold">Background</h4>
+                                <div class="choose-bg">
+                                    <div class="bg1 active">
+                                        <span></span>
+                                        <h5>Light</h5>
+                                    </div>
+                                    <div class="bg2">
+                                        <span></span>
+                                        <h5>Dark</h5>
                                     </div>
                                 </div>
-                                <!-- Background Colors -->
-                                <div class="background">
-                                    <h4 class="font-bold">Background </h4>
-                                    <div class="choose-bg">
-                                        <div class="bg1 active">
-                                            <span></span>
-                                            <h5>Light</h5>
-                                        </div>
-                                        <div class="bg2">
-                                            <span></span>
-                                            <h5>Dark</h5>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
                         </div>
-                        <!-- Modal Footer -->
-                        <div class="modal-footer">
-                        </div>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
-            <!---------- Fin Modal Theme ---------->
+        </div>
+        <!---------- Fin Modal Theme ---------->
 
-            <!------------------------------------------- Fin Modales -------------------------------------------->
+        <!------------------------------------------- Fin Modales -------------------------------------------->
     </main>
     @stack('modals')
     @livewireScripts

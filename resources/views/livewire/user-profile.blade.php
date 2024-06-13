@@ -3,7 +3,7 @@
         <div class="profile-info">
             <div class="personal-info">
                 <div class="profile-picture-bigger" id="my-profile-picture">
-                    <img src="{{ Storage::url($user->avatar) }}" alt="" />
+                    <img src="{{ Storage::url($user->avatar) }}" alt="{{ $user->username }}'s profile picture" />
                 </div>
                 <div class="profile-handle">
                     <h4 class="font-extrabold">{{ $user->name }}</h4>
@@ -26,7 +26,7 @@
                         <!-- Si el usuario autenticado ya sigue al usuario, el botón cambia a Unfollow -->
                         @if ($user->followers->contains(auth()->user()))
                             Unfollow
-                            <!-- Si no sigue al usuario, el botón cambia a Follow -->
+                        <!-- Si no sigue al usuario, el botón cambia a Follow -->
                         @else
                             Follow
                         @endif
@@ -39,7 +39,7 @@
                 @foreach ($posts as $post)
                     <div class="profile-feed">
                         <a href="{{ route('post-detail', $post->id) }}" class="feed-img">
-                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="" />
+                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover" alt="Image from {{ $post->user->username }}" />
                         </a>
                     </div>
                 @endforeach

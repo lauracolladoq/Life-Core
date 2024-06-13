@@ -11,7 +11,7 @@
                 <a href="{{ route('user-profile', $user->id) }}"
                     class="search-result pt-2 text-center flex gap-2 align-middle justify-start">
                     <div class="profile-picture">
-                        <img src="{{ Storage::url($user->avatar) }}" alt="" />
+                        <img src="{{ Storage::url($user->avatar) }}" alt="{{ $user->username }}'s profile picture" />
                     </div>
                     <div class="flex flex-col text-left">
                         <h4 class="font-bold">{{ $user->name }}</h4>

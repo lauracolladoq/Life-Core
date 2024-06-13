@@ -10,7 +10,9 @@
                             @if ($post->user->id == auth()->user()->id)
                                 <div class="user">
                                     <div class="profile-picture">
-                                        <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                        <img src="{{ Storage::url($post->user->avatar) }}"
+                                            alt="{{ $post->user->username }}'s profile picture" />
+
                                     </div>
                                     <div class="info">
                                         <h4 class="font-extrabold text-[16px]">
@@ -25,7 +27,9 @@
                                 <!-- Si el post no es del usuario logeado, puedes visitar el perfil -->
                                 <a href="{{ route('user-profile', $post->user->id) }}" class="user">
                                     <div class="profile-picture">
-                                        <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                        <img src="{{ Storage::url($post->user->avatar) }}"
+                                            alt="{{ $post->user->username }}'s profile picture" />
+
                                     </div>
                                     <div class="info">
                                         <h4 class="font-extrabold text-[16px]">
@@ -41,7 +45,9 @@
                             <!-- Si el post no es del usuario logeado, puedes visitar el perfil -->
                             <a href="{{ route('user-profile', $post->user->id) }}" class="user">
                                 <div class="profile-picture">
-                                    <img src="{{ Storage::url($post->user->avatar) }}" alt="" />
+                                    <img src="{{ Storage::url($post->user->avatar) }}"
+                                        alt="{{ $post->user->username }}'s profile picture" />
+
                                 </div>
                                 <div class="info">
                                     <h4 class="font-extrabold text-[16px]"><span>@</span>{{ $post->user->username }}
@@ -54,7 +60,7 @@
                         @endauth
                     </div>
                     <div class="feed-img">
-                        <img src="{{ Storage::url($post->image) }}" alt="" />
+                        <img src="{{ Storage::url($post->image) }}" alt="Image related to the post" />
                     </div>
                     <div class="action-button">
                         <!-- Si el usuario está logeado le aparece el botón de like -->
@@ -120,7 +126,9 @@
                                     @if ($comment->user_id == auth()->user()->id)
                                         <div class="comment-user">
                                             <div class="profile-picture">
-                                                <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                                <img src="{{ Storage::url($comment->user->avatar) }}"
+                                                    alt="{{ $comment->user->username }}'s profile picture" />
+
                                             </div>
                                             <div class="comment-body">
                                                 <p class="font-extrabold">{{ $comment->user->username }}</p>
@@ -135,7 +143,9 @@
                                         <div class="comment">
                                             <a href="{{ route('user-profile', $comment->user->id) }}"
                                                 class="profile-picture">
-                                                <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                                <img src="{{ Storage::url($comment->user->avatar) }}"
+                                                    alt="{{ $comment->user->username }}'s profile picture" />
+
                                             </a>
                                             <div class="comment-body">
                                                 <a href="{{ route('user-profile', $comment->user->id) }}"
@@ -148,7 +158,8 @@
                                 @else
                                     <div class="comment">
                                         <a href="{{ route('user-profile', $comment->user->id) }}" class="profile-picture">
-                                            <img src="{{ Storage::url($comment->user->avatar) }}" alt="" />
+                                            <img src="{{ Storage::url($comment->user->avatar) }}"
+                                                alt="{{ $comment->user->username }}'s profile picture" />
                                         </a>
                                         <div class="comment-body">
                                             <a href="{{ route('user-profile', $comment->user->id) }}"

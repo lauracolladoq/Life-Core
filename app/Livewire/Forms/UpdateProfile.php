@@ -27,6 +27,7 @@ class UpdateProfile extends Form
         return [
             'name' => ['required', 'string', 'max:25'],
             'username' => ['required', 'string', 'max:25', 'unique:users', 'alpha_dash'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'avatar' => ['nullable', 'image', 'max:2048']
         ];
     }

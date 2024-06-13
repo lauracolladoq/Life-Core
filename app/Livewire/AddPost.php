@@ -33,12 +33,13 @@ class AddPost extends Component
             'user_id' => auth()->id(),
         ]);
 
+        // Sincronizar los tags
         $post->tags()->attach($this->tags);
 
         // Si disparo el evento a todos con un array da error en la vista, por eso se dispara a cada uno por separado, 
         // además si los disparo juntos separándolos por comas, se ejecutan en orden aleatorio
 
-        // Se dispara el evento para actualizar los posts en las vistas Home, Explore y MyProfile
+        // Se dispara el evento para actualizar los posts en las vistas
         $this->dispatch('eventAddPost')->to(Home::class);
         $this->dispatch('eventAddPost')->to(Explore::class);
         $this->dispatch('eventAddPost')->to(MyProfile::class);

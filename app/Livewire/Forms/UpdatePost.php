@@ -15,9 +15,11 @@ class UpdatePost extends Form
     {
         $this->post = $post;
         $this->content = $post->content;
+        // Obtener los tags del post
         $this->tags_id = $post->getTagsId();
     }
 
+    // Reglas de validación
     public function rules(): array
     {
         return [
@@ -35,6 +37,7 @@ class UpdatePost extends Form
             'content' => $this->content,
         ]);
 
+        // Sincronizar los tags
         $this->post->tags()->sync($this->tags_id);
     }
 

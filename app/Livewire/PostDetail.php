@@ -11,7 +11,6 @@ class PostDetail extends Component
 {
     public Post $post;
 
-
     public function mount(Post $post)
     {
         $this->post = $post;
@@ -38,7 +37,7 @@ class PostDetail extends Component
         $post->usersLikes()->toggle(auth()->user()->id);
     }
 
-
+    // Métodos para eliminar un comentario
     public function delete(Comment $comment)
     {
         $comment->delete();

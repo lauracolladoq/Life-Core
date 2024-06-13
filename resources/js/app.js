@@ -19,10 +19,6 @@ function toggleComments() {
     });
 }
 
-window.onload = function () {
-    toggleComments();
-};
-
 /**
  * Ver/ocultar el campo password
  *

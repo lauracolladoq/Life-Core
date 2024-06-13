@@ -117,12 +117,28 @@
                 </form>
             </div>
             <div class="md:h-full max-md:mt-10 rounded-xl p-2 content-center">
-                <img src="{{ Storage::url('assets/poster.png') }}" class="object-contain rounded-sm hidden md:block"
-                    alt="login-image" />
+                <img src="{{ Storage::url('assets/poster.png') }}" alt="poster"
+                    class="object-contain rounded-sm hidden md:block" alt="login-image" />
                 <div class="flex justify-between p-2">
-                    <a href="" class="text-sm text-gray-400 text-center hover:underline">Term & Conditions</a>
-                    <p class="text-sm text-gray-400 text-center">© 2024 Life Core</p>
-                    <a href="" class="text-sm text-gray-400 text-center  hover:underline">Contact</a>
+                    <a href="{{ url('/terms') }}" class="text-sm text-gray-400 text-center hover:underline">Term & Conditions</a>
+                    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"
+                        class="text-sm text-gray-400 text-center hover:underline"><a property="dct:title"
+                            rel="cc:attributionURL"
+                            href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW">Life Core</a> by <a
+                            rel="cc:attributionURL dct:creator" property="cc:attributionName"
+                            href="https://github.com/lauracolladoq">Laura Collado Quirantes</a> is licensed under <a
+                            href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank"
+                            rel="license noopener noreferrer">CC BY-NC 4.0
+                        </a></p>
+                    <div class="flex p-2">
+                        <img style="height: 20px; margin-right: 2px"
+                            src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
+                            alt=""><img style="height: 20px; margin-right: 2px"
+                            src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
+                            alt=""><img style="height: 20px; margin-right: 2px"
+                            src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"
+                            alt="">
+                    </div>
                 </div>
             </div>
         </div>
