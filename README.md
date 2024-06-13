@@ -1,72 +1,7 @@
-<!-- PROJECT SHIELDS -->
-<p align="center">
-  <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW/stargazers">
-    <img src="https://img.shields.io/github/stars/lauracolladoq/Proyecto-Integrado-DAW.svg?style=for-the-badge" alt="Stargazers">
-  </a>
-  <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW/issues">
-    <img src="https://img.shields.io/github/issues/lauracolladoq/Proyecto-Integrado-DAW.svg?style=for-the-badge" alt="Issues">
-  </a>
-  <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW/blob/master/LICENSE.txt">
-    <img src="https://img.shields.io/github/license/lauracolladoq/Proyecto-Integrado-DAW.svg?style=for-the-badge" alt="MIT License">
-  </a>
-  <a href="https://www.linkedin.com/in/laura-collado-b281042a9/">
-    <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555" alt="LinkedIn">
-  </a>
-</p>
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Life Core</h3>
-
-  <p align="center">
-    A functional and interactive social media app!
-    <br />
-    <br />
-    <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/lauracolladoq/Proyecto-Integrado-DAW/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
 
 Life Core is a dynamic and interactive social network platform designed to connect people through shared interests and activities. Our platform offers a variety of features that make social interaction engaging and seamless.
 
@@ -105,35 +40,43 @@ Explore popular tags and trending topics on our platform. Discover content that 
 
 ### 🛠️ | Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![JavaScript][JavaScript.com]][JavaScript-url]
-* [![Tailwind][Tailwind.com]][Tailwind-url]
-* [![CSS][CSS.com]][CSS-url]
-* [![HTML][HTML.com]][HTML-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+<p align="center">
+  <a href="https://laravel.com">
+    <img src="https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  </a>
+  <a href="https://www.javascript.com">
+    <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript">
+  </a>
+  <a href="https://tailwindcss.com">
+    <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">
+    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML">
+  </a>
+  <a href="https://getbootstrap.com">
+    <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+  </a>
+  <a href="https://www.w3.org/Style/CSS/Overview.en.html">
+    <img src="https://img.shields.io/badge/CSScss-%2338B2AC.svg?style=for-the-badge&logo=CSS-css&logoColor=white" alt="CSS">
+  </a>
+</p>
 
 <br>
 
 ## Get Started
-Join our vibrant community today and start exploring the possibilities of social connectivity. Whether you're a creator, a social butterfly, or simply looking to connect, our platform offers the tools and features to enrich your social experience.
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+Make sure you have the following installed:
+* npm
+  ```sh
+  npm install npm@latest -g
 
 
+* Laravel
+  ```sh
+  composer global require laravel/installer
 
+### Instalattiom
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: images/screenshot.png
-
-[Laravel.com]: https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[JavaScript.com]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
-[JavaScript-url]: https://www.javascript.com
-[Bootstrap.com]:https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[Tailwind.com]:https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
-[Tailwind-url]: https://tailwindcss.com
-[CSS.com]:https://img.shields.io/badge/CSScss-%2338B2AC.svg?style=for-the-badge&logo=CSS-css&logoColor=white
-[CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
-[HTML.com]:https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
-[HTML-url]: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
