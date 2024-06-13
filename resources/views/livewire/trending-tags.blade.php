@@ -7,7 +7,7 @@
     <div>
         <div class="flex flex-col gap-2 text-center items-center">
             @foreach ($tags as $tag)
-                <a href="{{ route('trending-tag', $tag->id) }}" class="bg-[{{ $tag->color }}] text-black rounded-full">{{ $tag->name }}</a>
+                <a href="{{ route('trending-tag', $tag->id) }}" class="bg-[{{ $tag->color }}] text-black rounded-full px-1 py-0.5">{{ $tag->name }}</a>
             @endforeach
         </div>
     </div>
