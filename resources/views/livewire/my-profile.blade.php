@@ -3,53 +3,62 @@
         <div class="profile-info">
             <div class="personal-info">
                 <div class="profile-picture-bigger" id="my-profile-picture">
-                    <img src="{{ Storage::url($user->avatar) }}" alt="{{ $user->username }}'s profile picture" />
+                    <img src="{{ Storage::url(auth()->user()->avatar) }}"alt="" />
                 </div>
                 <div class="profile-handle">
-                    <h4 class="font-extrabold">{{ $user->name }}</h4>
-                    <p class="text-gry"><span>@</span>{{ $user->username }}</p>
+                    <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
+                    <p class="text-gry"><span>@</span>{{ auth()->user()->username }}</p>
                 </div>
             </div>
             <div class="social-info">
                 <div>
                     <h5 class="font-extrabold text-sm">Followers</h5>
-                    <p class="text-gry">{{ $user->followers()->count() }}</p>
+                    <p class="text-gry">{{ auth()->user()->followers()->count() }}</p>
                 </div>
                 <div>
-                    <h5 class="font-extrabold text-sm">Following</h5>
-                    <p class="text-gry">{{ $user->following()->count() }}</p>
+                    <h5 class="font-extrabold text-sm">Following</h4>
+                        <p class="text-gry">{{ auth()->user()->following()->count() }}</p>
                 </div>
             </div>
-            <div>
-                @auth
-                    <button wire:click="follow({{ $user->id }})" class="btn btn-primary">
-                        <!-- Si el usuario autenticado ya sigue al usuario, el botón cambia a Unfollow -->
-                        @if ($user->followers->contains(auth()->user()))
-                            Unfollow
-                            <!-- Si no sigue al usuario, el botón cambia a Follow -->
-                        @else
-                            Follow
-                        @endif
-                    </button>
-                @endauth
+            <div class="flex gap-3">
+                <button class="btn btn-primary" wire:click="editProfile({{ auth()->user()->id }})">
+                    Edit
+                </button>
+                <form method="POST" action="{{ route('logout') }}" x-data class="block lg:hidden">
+                    @csrf
+                    <a class="btn btn-primary" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
+                
             </div>
         </div>
+
         <div class="profile-feeds">
             @if (count($posts))
                 @foreach ($posts as $post)
                     <div class="profile-feed">
                         <a href="{{ route('post-detail', $post->id) }}" class="feed-img">
                             <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover"
-                                alt="Post image by {{ $post->user->username }}" />
+                                alt="" />
                         </a>
+                        <div class="post-options">
+                            <button wire:click="deleteConfirmation({{ $post->id }})">
+                                <i class="fas fa-trash text-red-500"></i>
+                            </button>
+                            <button wire:click="edit({{ $post->id }})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
                     </div>
                 @endforeach
             @else
                 <div class="col-span-3">
                     <p class="text-2xl text-center font-bold">
-                        There are no posts yet!
+                        Add your first post!
                     </p>
                 </div>
+
             @endif
         </div>
     </div>
@@ -77,8 +86,7 @@
                             <div class="relative div-image">
                                 @if ($post->image)
                                     <img src="{{ Storage::url($form->post->image) }}"
-                                        class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center"
-                                        alt="Updated post image" />
+                                        class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
                                 @endif
                             </div>
                         </div>
@@ -88,7 +96,7 @@
                             <x-input-error for="form.content" class="pt-2" />
                         </div>
                     </div>
-
+                
                     <div class="flex flex-col pt-2">
                         <x-label for="tags_id" class="font-extrabold text-center">Tags</x-label>
                         <div class="flex flex-wrap gap-2 justify-center">
@@ -106,7 +114,7 @@
                         <x-input-error for="form.tags_id" class="pt-2" />
                     </div>
                 </x-slot>
-
+                
                 <x-slot name="footer">
                     <x-button wire:click="update" wire:loading.attr="disabled" class="btn btn-primary">
                         Save
@@ -142,12 +150,10 @@
                             </label>
                             @if ($formProfile->avatar)
                                 <img src="{{ $formProfile->avatar->temporaryUrl() }}"
-                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center"
-                                    alt="Updated profile avatar" />
+                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
                             @else
                                 <img src="{{ Storage::url($formProfile->user->avatar) }}"
-                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center"
-                                    alt="{{ $formProfile->user->name }}'s avatar" />
+                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
                             @endif
                         </div>
                         <x-input-error for="form.avatar" class="my-2" />

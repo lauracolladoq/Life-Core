@@ -176,7 +176,7 @@
                     </div>
                     @auth
                         <div class="pt-2">
-                            @livewire('add-comment', ['postId' => $post->id])
+                            @livewire('add-comment', ['postId' => $post->id], key('add-comment-' . $post->id))
                         </div>
                     @endauth
                 </div>

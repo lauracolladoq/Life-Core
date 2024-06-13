@@ -84,7 +84,8 @@
                     <span><img src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}"
                             alt="Profile picture of another user who liked the post" /></span>
                     <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }}</b> and
-                        <b>{{ $post->usersLikes->count() - 1 }}</b> others</p>
+                        <b>{{ $post->usersLikes->count() - 1 }}</b> others
+                    </p>
                 </div>
             @endif
             <div class="caption">
@@ -159,7 +160,7 @@
             </div>
             @auth
                 <div class="pt-2">
-                    @livewire('add-comment', ['postId' => $post->id])
+                    @livewire('add-comment', ['postId' => $post->id], key('add-comment-' . $post->id))
                 </div>
             @endauth
         </div>
