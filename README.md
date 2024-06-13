@@ -1,9 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 
 ## 🔍 | About The Project
-<p>
-    <img src="storage\app\public\assets\portada.png" alt="Portada">
-</p>
+![logo](assets\portada.png)
 
 Life Core is a dynamic and interactive social network platform designed to connect people through shared interests and activities. Our platform offers a variety of features that make social interaction engaging and seamless.
 
@@ -188,3 +186,16 @@ To enable Socialite for authentication through platforms like Facebook, Google, 
 ```
 2. **Configure Environment Variables:** Add the corresponding environment variables to your .env file.
 3. **Implement Social Authentication:** Use Socialite in your application to authenticate users through these providers. 
+
+<br>
+
+## 👥 | Autores
+
+- **Laura Collado Quirantes** - Web Developer - [lauracolladoq](https://github.com/lauracolladoq)
+- **Laura Collado Quirantes** - Documentation - [lauracolladoq](https://github.com/lauracolladoq)
+
+<br>
+
+## 📜 | Licencia
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
