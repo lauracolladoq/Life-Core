@@ -1,7 +1,10 @@
 <!-- ABOUT THE PROJECT -->
 
 ## 🔍 | About The Project
+<<<<<<< HEAD
 
+=======
+>>>>>>> e09dd0e85b2bb7cfe7af221934c425bc9aaea616
 Life Core is a dynamic and interactive social network platform designed to connect people through shared interests and activities. Our platform offers a variety of features that make social interaction engaging and seamless.
 
 <br>
