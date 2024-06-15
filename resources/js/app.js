@@ -1,5 +1,12 @@
 import './bootstrap';
 
+document.addEventListener('DOMContentLoaded', function () {
+    window.addEventListener('comentarios', function () {
+        // Llama a tu función JavaScript aquí
+        toggleComments();
+    });
+});
+
 /**
  * Ver/ocultar los comentarios de una publicación
  */

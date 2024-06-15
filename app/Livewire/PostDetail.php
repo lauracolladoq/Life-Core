@@ -16,7 +16,6 @@ class PostDetail extends Component
         $this->post = $post;
     }
 
-    #[On('eventAddPost')]
     #[On('eventAddComment')]
     public function render()
     {

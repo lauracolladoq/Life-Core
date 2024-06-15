@@ -22,7 +22,6 @@ class MyProfile extends Component
     public bool $openModalUpdateProfile = false;
     public UpdateProfile $formProfile;
 
-    #[On('eventAddPost')]
     #[On('eventDeletedPost')]
     #[On('eventUpdatedProfile')]
     public function render()

@@ -18,7 +18,6 @@ class TrendingTag extends Component
         $this->tag = $tag;
     }
 
-    #[On('eventAddPost')]
     #[On('eventAddComment')]
     public function render()
     {

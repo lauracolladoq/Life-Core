@@ -36,21 +36,15 @@ class AddPost extends Component
         // Sincronizar los tags
         $post->tags()->attach($this->tags);
 
-        // Si disparo el evento a todos con un array da error en la vista, por eso se dispara a cada uno por separado, 
-        // además si los disparo juntos separándolos por comas, se ejecutan en orden aleatorio
-
-        // Se dispara el evento para actualizar los posts en las vistas
-        $this->dispatch('eventAddPost')->to(Home::class);
-        $this->dispatch('eventAddPost')->to(Explore::class);
-        $this->dispatch('eventAddPost')->to(MyProfile::class);
-        $this->dispatch('eventAddPost')->to(TrendingTag::class);
-
         // Se dispara el evento para mostrar el mensaje informativo
         $this->dispatch("message", "New post created!");
         $this->cancelAddPost();
+
+        // Redireccionar a la página actual para que se actualice y añada el JavaScript ya que si utilizo render() no se ejecuta el JavaScript
+        return redirect(request()->header('Referer'));
     }
 
-    
+
     public function cancelAddPost()
     {
         $this->reset(['openModalAddPost', 'image', 'content', 'tags']);

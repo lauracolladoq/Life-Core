@@ -10,7 +10,6 @@ use Livewire\Component;
 
 class Home extends Component
 {
-    #[On('eventAddPost')]
     #[On('eventAddComment')]
     public function render()
     {
