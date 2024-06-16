@@ -13,6 +13,7 @@ use App\Livewire\UserProfile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware([
@@ -38,6 +39,8 @@ Route::get('/trending-tag/{tag}', TrendingTag::class)->name('trending-tag');
 Route::get('/user-profile/{user}', UserProfile::class)->name('user-profile');
 
 Route::get('/post-detail/{post}', PostDetail::class)->name('post-detail');
+
+
 
 // Rutas de Socialite
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');

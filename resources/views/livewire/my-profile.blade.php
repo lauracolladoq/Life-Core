@@ -30,7 +30,7 @@
                         {{ __('Log Out') }}
                     </a>
                 </form>
-                
+
             </div>
         </div>
 
@@ -39,8 +39,8 @@
                 @foreach ($posts as $post)
                     <div class="profile-feed">
                         <a href="{{ route('post-detail', $post->id) }}" class="feed-img">
-                            <img src="{{ Storage::url($post->image) }}" class="w-full h-full rounded bg-center bg-cover"
-                                alt="" />
+                            <img src="{{ Storage::url($post->image) }}"
+                                class="w-full h-full rounded bg-center bg-cover" alt="" />
                         </a>
                         <div class="post-options">
                             <button wire:click="deleteConfirmation({{ $post->id }})">
@@ -96,7 +96,7 @@
                             <x-input-error for="form.content" class="pt-2" />
                         </div>
                     </div>
-                
+
                     <div class="flex flex-col pt-2">
                         <x-label for="tags_id" class="font-extrabold text-center">Tags</x-label>
                         <div class="flex flex-wrap gap-2 justify-center">
@@ -114,7 +114,7 @@
                         <x-input-error for="form.tags_id" class="pt-2" />
                     </div>
                 </x-slot>
-                
+
                 <x-slot name="footer">
                     <x-button wire:click="update" wire:loading.attr="disabled" class="btn btn-primary">
                         Save
@@ -133,45 +133,46 @@
                     <button wire:click="cancelUpdateProfile" class="flex-shrink-0 ml-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                             color="#666666" fill="none">
-                            <path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 6L12 12M12 12L6 18M12 12L18 18M12 12L6 6" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
             </x-slot>
             <x-slot name="content">
-                <div class="row">
-                    <div class="column flex flex-col w-1/2">
+                <div class="flex flex-col md:flex-row md:space-x-4 gap-y-4">
+                    <div class="flex flex-col w-full md:w-1/2">
                         <x-label for="avatarUpdate" class="font-extrabold text-center">Avatar</x-label>
-                        <div class="relative div-image">
-                            <input type="file" wire:model="form.avatar" accept="avatar/*" hidden id="avatarUpdate" />
-                            <label for="avatarUpdate" class="absolute btn btn-primary bottom-2 ">
-                                <i class="fa-solid fa-upload mr-2"></i>Upload
-                            </label>
-                            @if ($formProfile->avatar)
-                                <img src="{{ $formProfile->avatar->temporaryUrl() }}"
-                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
-                            @else
-                                <img src="{{ Storage::url($formProfile->user->avatar) }}"
-                                    class="rounded-xl w-full h-full br-no-repeat bg-cover bg-center" />
-                            @endif
+                        <div class="flex justify-center items-center relative">
+                            <div class="relative">
+                                <input type="file" wire:model="formProfile.avatar" accept="image/*" hidden id="avatarUpdate" />
+                                @if ($formProfile->avatar)
+                                    <img src="{{ $formProfile->avatar->temporaryUrl() }}" class="w-60 h-60 aspect-square rounded-full overflow-hidden" />
+                                @else
+                                    <img src="{{ Storage::url($formProfile->user->avatar) }}" class="w-60 h-60 aspect-square rounded-full overflow-hidden" />
+                                @endif
+                                <label for="avatarUpdate" class="absolute btn btn-primary left-1/2 transform -translate-x-1/2 bottom-3">
+                                    <i class="fa-solid fa-upload mr-2"></i>Upload
+                                </label>
+                            </div>
                         </div>
-                        <x-input-error for="form.avatar" class="my-2" />
+                        <x-input-error for="formProfile.avatar" class="my-2" />
                     </div>
-                    <div class="col flex flex-col items-center justify-center text-center gap-2">
+                    <div class="flex flex-col items-center justify-center text-center gap-2 w-full md:w-1/2">
                         <div>
                             <x-label for="name" class="font-extrabold text-center">Name:</x-label>
-                            <x-input id="name" name="name" wire:model="form.name"></x-input>
-                            <x-input-error for="form.name" />
+                            <x-input id="name" name="name" wire:model="formProfile.name"></x-input>
+                            <x-input-error for="formProfile.name" />
                         </div>
                         <div>
                             <x-label for="username" class="font-extrabold text-center">Username:</x-label>
-                            <x-input id="username" name="username" wire:model="form.username"></x-input>
-                            <x-input-error for="form.username" />
+                            <x-input id="username" name="username" wire:model="formProfile.username"></x-input>
+                            <x-input-error for="formProfile.username" />
                         </div>
                     </div>
                 </div>
             </x-slot>
+            
             <x-slot name="footer">
                 <x-button wire:click="updateProfile" wire:loading.attr="disabled" class="btn btn-primary">
                     Save
@@ -179,4 +180,5 @@
             </x-slot>
         </x-dialog-modal>
     @endisset
+
 </div>

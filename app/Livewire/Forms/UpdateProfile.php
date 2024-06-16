@@ -4,12 +4,10 @@ namespace App\Livewire\Forms;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class UpdateProfile extends Form
 {
-
     public ?User $user = null;
     public string $username = '';
     public string $name = '';
@@ -26,8 +24,7 @@ class UpdateProfile extends Form
     {
         return [
             'name' => ['required', 'string', 'max:25'],
-            'username' => ['required', 'string', 'max:25', 'unique:users', 'alpha_dash'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'username' => ['required', 'string', 'max:25', 'unique:users,username,' . $this->user->id, 'alpha_dash'],
             'avatar' => ['nullable', 'image', 'max:2048']
         ];
     }
@@ -38,11 +35,12 @@ class UpdateProfile extends Form
 
         $route = $this->user->avatar;
 
-        if ($route) {
-            if (basename($route) != 'default.png') {
-                Storage::delete($route);
-            }
+        if ($this->avatar) {
+            // Guarda la nueva imagen y elimina la antigua si no es la imagen por defecto
             $route = $this->avatar->store('avatar');
+            if ($this->user->avatar && basename($this->user->avatar) != 'default.png') {
+                Storage::delete($this->user->avatar);
+            }
         }
 
         $this->user->update([
@@ -51,7 +49,6 @@ class UpdateProfile extends Form
             'name' => $this->name,
         ]);
     }
-
 
     public function cancelEditProfile()
     {
