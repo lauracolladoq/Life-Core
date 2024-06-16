@@ -1,12 +1,17 @@
 <!-- ABOUT THE PROJECT -->
 
 ## 🔍 | About The Project
-Life Core is a dynamic and interactive social network platform designed to connect people through shared interests and activities. Our platform offers a variety of features that make social interaction engaging and seamless.
+Life Core is a dynamic and interactive social network platform designed to connect people through shared interests and activities. Our platform offers a variety of features that make social interaction engaging and seamless. 
 
-<p align="center">
-  <a href="http://lifecore.3utilities.com">
-  </a>
-</p>
+<br>
+
+  <p align="center">
+      You can access the live version of our application using the following link:
+    <br />
+    <a href="http://lifecore.3utilities.com"><strong>Life Core »</strong></a>
+    <br />
+
+  </p>
 
 <br>
 
