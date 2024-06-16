@@ -503,9 +503,15 @@ span img {
 
 .profile-picture-bigger {
   width: 5rem;
+  height: 5rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.profile-picture-bigger img {
+  width: 100%;
+  height: 100%;
 }
 
 .profile-feeds {

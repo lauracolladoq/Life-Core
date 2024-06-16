@@ -37,8 +37,9 @@ class AddPost extends Component
         $post->tags()->attach($this->tags);
 
         // Se dispara el evento para mostrar el mensaje informativo
-        $this->dispatch("message", "New post created!");
         $this->cancelAddPost();
+        $this->dispatch("message", "New post created!");
+
 
         // Redireccionar a la página actual para que se actualice y añada el JavaScript ya que si utilizo render() no se ejecuta el JavaScript
         return redirect(request()->header('Referer'));
